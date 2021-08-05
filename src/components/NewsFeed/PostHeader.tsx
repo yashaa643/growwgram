@@ -11,7 +11,7 @@ const PostHeader = ({user} : MyProps) => {
     return(
        <>
             <img className="header-icon" src={profile_image.small} alt="profile_icon"></img>
-            <a className="header-user" href="_blank">{instagram_username}</a>
+            <a className="header-user bold-text" href="_blank">{instagram_username}</a>
        </>
     )
 }
