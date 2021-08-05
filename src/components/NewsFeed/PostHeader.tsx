@@ -7,11 +7,11 @@ type MyProps = {
 }
 
 const PostHeader = ({user} : MyProps) => {
-    const {instagram_username,profile_image} = user;
+    const {username, profile_image} = user;
     return(
        <>
             <img className="header-icon" src={profile_image.small} alt="profile_icon"></img>
-            <a className="header-user bold-text" href="_blank">{instagram_username}</a>
+            <a className="header-user bold-text" href="_blank">{username}</a>
        </>
     )
 }

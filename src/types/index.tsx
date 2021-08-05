@@ -6,6 +6,7 @@ export type post = {
     likes: number,
     liked_by_user: boolean,
     description: string,
+    
 
     urls: {
       raw: string,
