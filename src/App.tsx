@@ -1,9 +1,13 @@
+import './styles/App.css';
+
 import React from 'react';
 
-function App() {
+import NewsFeed from './components/NewsFeed/NewsFeed';
+
+const App = () => {
   return (
-    <div>
-      GrowwGram
+    <div className="main">
+        <NewsFeed/>
     </div>
   );
 }

@@ -1,0 +1,9 @@
+.main{
+    background-color: #fafafa;
+    display: flex;
+    justify-content: center;
+    padding: 0px;
+    font-family: 'Montserrat';
+    letter-spacing: 3%;
+}
+
