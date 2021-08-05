@@ -1,8 +1,12 @@
-.post{
-    border: 0.5px solid rgb(200,200,200,0.5);
-    border-radius: 2px;
+.post-container{
     margin-bottom: 24px;
+}
+.post{
+    border: 1px solid rgb(200,200,200,0.5);
+    border-radius: 2px;
     background-color: white;
+    width: 400px;
+    margin: auto;
 }
 .post-header{
     box-sizing: border-box;
@@ -12,7 +16,7 @@
     align-items: center;
     height: 60px;
     padding: 16px;
-    border-bottom: 0.5px solid rgb(200,200,200,0.3);
+    border-bottom: 1px solid rgb(200,200,200,0.3);
     border-bottom-left-radius: 0px;
     border-bottom-right-radius: 0px;
 }
@@ -22,7 +26,7 @@
 }
 
 .header-icon{
-    border: 0.5px solid rgb(200,200,200,0.5);
+    border: 1px solid rgb(200,200,200,0.5);
     border-radius: 50%;
     height: 42px;
     width: 42px;
@@ -37,6 +41,20 @@
 .bold-text{
     font-size: 0.8rem;
     font-weight:600;
+}
+
+.regular-text{
+    font-size: 0.8rem;
+    font-weight: 100;
+}
+
+.light-text{
+    font-size: 0.6rem;
+    color: rgb(142,142,142,1);
+}
+
+p{
+    margin: 6px 0;
 }
 
 a:hover{
@@ -61,7 +79,12 @@ a:hover{
 }
 
 .post-details{
-   padding: 0 16px; 
+   padding: 0 16px;
+   max-width: 100%; 
+}
+
+.liked-color{
+    color: #ed4956;
 }
 
 

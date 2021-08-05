@@ -6,7 +6,7 @@ export type post = {
     likes: number,
     liked_by_user: boolean,
     description: string,
-    
+    alt_description: string,
 
     urls: {
       raw: string,
@@ -17,6 +17,7 @@ export type post = {
     },
     
     user: user,
+
  }
 
  export type user =  {
