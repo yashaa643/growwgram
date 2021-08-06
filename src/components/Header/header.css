@@ -1,0 +1,30 @@
+@font-face {
+    font-family: "Billabong";
+    src: local("Billabong"),
+     url("../../fonts/Billabong/Billabong.ttf") format("truetype");
+    font-weight: bold;
+}
+
+.hr12Nav{
+    background-color: white;
+    border-bottom: 1px solid rgb(200,200,200,0.5);
+    height: 54px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.hr23Logo{
+    font-family: "Billabong";
+    font-size: 2rem;
+}
+
+a{
+    text-decoration: none;
+    color: black;
+}
+
+a:hover{
+    text-decoration: none;
+}
+
