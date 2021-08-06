@@ -1,5 +1,6 @@
 import React from 'react';
 
+import InfiniteScroll from 'react-infinite-scroll-component';
 import { connect } from 'react-redux';
 
 import { fetchPosts } from '../../actions';
@@ -26,11 +27,19 @@ class NewsFeed extends React.Component<MyProps, MyState>{
         console.log(posts);
         return (    
             <div className="newsfeed">
-               {posts.map((post) => {
+                <InfiniteScroll
+                    dataLength={posts.length}
+                    next={this.props.fetchPosts}
+                    hasMore={true}
+                    loader={<h3>Loading</h3>}
+                    >
+                     {posts.map((post) => {
                    return(
                    <Post key={post.id} post={post}></Post>
                    )
                })}
+                </InfiniteScroll>
+              
             </div>  
         )
     };

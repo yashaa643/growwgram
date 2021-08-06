@@ -4,7 +4,7 @@ const postsReducer = (state=[], action : FETCH_POSTS) => {
     
     switch(action.type){
         case 'FETCH_POSTS':
-            return action.payload;
+            return [...state,...action.payload];
         default:
             return state;
     }
