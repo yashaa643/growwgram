@@ -1,10 +1,16 @@
 @import "../../../styles/animations.css";
 
+:root{
+    --border-color: rgb(200,200,200,0.5);
+    --light-text:  rgb(142,142,142,1);
+    --liked-color: #ed4956;
+}
+
 .post-container{
     margin-bottom: 24px;
 }
 .post{
-    border: 1px solid rgb(200,200,200,0.5);
+    border: 1px solid var(--border-color);
     border-radius: 2px;
     background-color: white;
     width: 400px;
@@ -18,7 +24,7 @@
     align-items: center;
     height: 60px;
     padding: 16px;
-    border-bottom: 1px solid rgb(200,200,200,0.3);
+    border-bottom: 1px solid var(--border-color);
     border-bottom-left-radius: 0px;
     border-bottom-right-radius: 0px;
 }
@@ -28,7 +34,7 @@
 }
 
 .header-icon{
-    border: 1px solid rgb(200,200,200,0.5);
+    border: 1px solid var(--border-color);
     border-radius: 50%;
     height: 42px;
     width: 42px;
@@ -38,6 +44,11 @@
     margin-left: 10px;
     text-decoration: none;
     color: inherit;
+}
+
+.header-user:hover{
+    text-decoration: underline;
+    cursor: pointer;
 }
 
 .bold-text{
@@ -52,7 +63,7 @@
 
 .light-text{
     font-size: 0.6rem;
-    color: rgb(142,142,142,1);
+    color: var(--light-text);
 }
 
 p{
@@ -94,7 +105,7 @@ a:hover{
 }
 
 .liked-color{
-    color: #ed4956;
+    color: var(--liked-color);
 }
 
 

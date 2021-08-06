@@ -18,34 +18,33 @@ type MyProps = {
 
 class NewsFeed extends React.Component<MyProps, MyState>{
 
-    componentDidMount(){
+    componentDidMount() {
         this.props.fetchPosts();
     }
 
     render() {
         const posts = this.props.posts;
         console.log(posts);
-        return (    
+        return (
             <div className="newsfeed">
                 <InfiniteScroll
                     dataLength={posts.length}
                     next={this.props.fetchPosts}
                     hasMore={true}
                     loader={<h3>Loading</h3>}
-                    >
-                     {posts.map((post) => {
-                   return(
-                   <Post key={post.id} post={post}></Post>
-                   )
-               })}
+                >
+                        {posts.map((post) => {
+                            return (
+                                <Post key={post.id} post={post}></Post>
+                            )
+                        })}
                 </InfiniteScroll>
-              
-            </div>  
+            </div>
         )
     };
 }
 
-const mapStateToProps = (state: {posts : post[]}) => {
+const mapStateToProps = (state: { posts: post[] }) => {
     return { posts: state.posts };
 }
 

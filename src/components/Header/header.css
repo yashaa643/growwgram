@@ -17,14 +17,11 @@
 .hr23Logo{
     font-family: "Billabong";
     font-size: 2rem;
-}
-
-a{
-    text-decoration: none;
     color: black;
 }
 
-a:hover{
-    text-decoration: none;
+.hr23Logo:hover{
+    cursor: pointer;
 }
+
 

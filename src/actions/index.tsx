@@ -1,9 +1,12 @@
 import { Dispatch } from 'react';
 
 import unsplash from '../api/unsplash';
-import { FETCH_POSTS } from '../types';
+import {
+  TfetchPosts,
+  TfetchUser,
+} from '../types';
 
-export const fetchPosts = () => async (dispatch: Dispatch<FETCH_POSTS>) =>{
+export const fetchPosts = () => async (dispatch: Dispatch<TfetchPosts>) =>{
     const response = await unsplash.get('/photos/random',{
         params: {
            count: 10     
@@ -11,3 +14,31 @@ export const fetchPosts = () => async (dispatch: Dispatch<FETCH_POSTS>) =>{
     });
     dispatch({type: 'FETCH_POSTS', payload: response.data});
 }
+
+export const fetchUser = (username:string) => async (dispatch: Dispatch<TfetchUser>) =>{
+    const url = '/users/' + username;
+    const response = await unsplash.get(url,{
+        params: {
+           username: username,  
+        },
+    });
+    dispatch({type: 'FETCH_USER', payload: response.data});
+}
+
+export const clearUser = () => (dispatch: Dispatch<TfetchUser>) =>{
+    dispatch({type: 'CLEAR_USER', payload:{}});
+}
+
+export const fetchAUserPosts = (username:string,page:number) => async (dispatch: Dispatch<TfetchPosts>) =>{
+    const url = '/users/' + username + '/photos';
+    const response = await unsplash.get(url,{
+        params: {
+           username: username,  
+           page: page
+        },
+    });
+
+    dispatch({type: 'FETCH_USER_POSTS', payload: response.data});
+}
+
+

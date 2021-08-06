@@ -22,12 +22,17 @@ export type post = {
     updated_at: string,
     username: string,
     name: string,
+    first_name: string;
+    last_name:string;
     portfolio_url: string,
     profile_image: {
       small: string,
       medium: string,
       large: string
     }
+    followed_by_user:boolean;
+    followers_count:number;
+    following_count:number;
     bio: string,
     location: string,
     total_likes: number,
@@ -38,6 +43,15 @@ export type post = {
 }
 
 
-export type FETCH_POSTS = {
-    type: "FETCH_POSTS", payload: post[]
+export type TfetchPosts = {
+    type: string, payload: post[];
+}
+
+export type TfetchUser = {
+    type: string, payload: user | {};
+}
+
+export type storeState = {
+    posts: post[];
+    user: user;
 }

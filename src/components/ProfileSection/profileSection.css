@@ -1,0 +1,104 @@
+:root{
+    --border-color: rgb(200,200,200,0.7);
+    --light-text:  rgb(142,142,142,1);
+    --liked-color: #ed4956;
+    --follow-color: #0095f6;
+}
+
+.ps27UserHeader{
+    width: 60%;
+    display: flex;
+    justify-content: flex-start;
+
+}
+
+.ps27UserProfileIcon{
+    border: 1px solid var(--border-color);
+    border-radius: 50%;
+    height: 150px;
+    width: 150px;
+}
+
+.ps27ImgContainer{
+    padding: 0 20px;
+    width: 198px;
+    margin-right: 30px;
+}
+
+.username-text{
+    font-size: 1.6rem;
+}
+
+.ps27UserDetails{
+    display: flex;
+    flex-direction: column;
+}
+
+.ud23FirstRow{
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    margin-bottom: 20px;
+    margin-top: 10px;
+}
+
+.ud23ButtonRow{
+    display: flex;
+    margin-left: 20px;
+}
+
+.ud23ButtonRow button{
+    background-color: transparent;
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    box-sizing: border-box;
+    display: block;
+    float: none;
+    position: relative;
+    padding: 5px 9px;
+    margin-right: 6px;
+}
+
+.ud23FollowButton{
+    margin-left: 20px;
+}
+
+.ud23FollowButton button{
+    color: white;
+    border: 1px solid transparent;
+    background-color: var(--follow-color);
+    border-radius: 4px;
+    box-sizing: border-box;
+    display: block;
+    float: none;
+    position: relative;
+    padding: 5px 9px;
+    margin-right: 6px;
+}
+
+.ud23CountRow{
+    margin-bottom: 20px;
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    padding-left: 0px;
+    align-items: flex-start;
+    margin-top: 0;
+}
+
+.ud23CountRow li{
+    list-style-type: none;
+    margin-right: 40px;
+    font-size: 0.9rem;
+}
+
+.ud23BioRow h1{
+    margin: 0;
+    font-size: 0.9rem;
+}
+
+.ud23BioContent{
+    display: inline-block;
+    font-size: 0.8rem;
+    max-width: 30vw;
+}
