@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { user } from '../../types';
+import { user } from '../../../types';
 
 type MyProps = {
     user: user;

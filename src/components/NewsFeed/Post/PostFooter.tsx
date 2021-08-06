@@ -1,8 +1,8 @@
-import '../../styles/Post.css';
+import './post.css';
 
-import React from 'react';
+import React, { useState } from 'react';
 
-import { timePostedAgo } from '../../utils/utils';
+import { timePostedAgo } from '../../../utils/utils';
 import LikeSection from './LikeSection';
 
 type MyProps = {
@@ -14,11 +14,19 @@ type MyProps = {
 }
 
 const PostFooter = ({created_at,description,username,likes,liked_by_user}:MyProps) => {
+
+    const [likesCount, setlikesCount] = useState(likes);
+
+    const updateLikes = (liked:boolean) => {
+        !liked ? setlikesCount(likesCount+1):
+        setlikesCount(likesCount-1);
+    }
+
     return (
         <div className="post-footer">
-            <LikeSection liked={liked_by_user}></LikeSection>
+            <LikeSection liked_by_user={liked_by_user} updateLikes={updateLikes}></LikeSection>
             <div className="post-details">
-                <div className="bold-text"> {likes} likes</div>
+                <div className="bold-text"> {likesCount} likes</div>
                 <p className="regular-text">
                     <span className="bold-text">{username}</span>
                     &nbsp;{description}

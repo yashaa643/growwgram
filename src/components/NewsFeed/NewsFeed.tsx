@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 
 import { fetchPosts } from '../../actions';
 import { post } from '../../types';
-import Post from './Post';
+import Post from './Post/';
 
 type MyState = {
     posts: post[];

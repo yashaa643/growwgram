@@ -1,3 +1,5 @@
+@import "../../../styles/animations.css";
+
 .post-container{
     margin-bottom: 24px;
 }
@@ -76,6 +78,14 @@ a:hover{
     height: 40px;
     background: none;
     border: none;
+}
+
+.icon-btn.animated{
+    animation: zoom-in-zoom-out 0.5s ease;
+}
+
+.icon-btn:hover{
+    cursor: pointer;
 }
 
 .post-details{

@@ -1,5 +1,4 @@
 export type post = {
-
     id: string,
     created_at: string,
     updated_at: string
@@ -7,7 +6,6 @@ export type post = {
     liked_by_user: boolean,
     description: string,
     alt_description: string,
-
     urls: {
       raw: string,
       full: string,
@@ -17,7 +15,6 @@ export type post = {
     },
     
     user: user,
-
  }
 
  export type user =  {

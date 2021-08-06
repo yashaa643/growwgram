@@ -1,8 +1,8 @@
-import '../../styles/Post.css';
+import './post.css';
 
 import React from 'react';
 
-import { post } from '../../types';
+import { post } from '../../../types';
 import PostFooter from './PostFooter';
 import PostHeader from './PostHeader';
 

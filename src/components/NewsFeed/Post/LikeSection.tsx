@@ -1,15 +1,22 @@
-import '../../styles/Post.css';
+import './post.css';
 
-import React from 'react';
+import React, { useState } from 'react';
 
 type MyProps = {
-    liked: boolean
+    liked_by_user: boolean
+    updateLikes: (liked:boolean) => void
 }
-const LikeSection = ({liked}:MyProps) => {
 
+const LikeSection = ({liked_by_user,updateLikes}:MyProps) => {
+    const [liked, setLiked] = useState(liked_by_user);
     return (
     <div className="like-section">
-        <button className="icon-btn">
+        <button onClick= {() => {
+            updateLikes(liked);
+            setLiked(!liked)
+        }} 
+        className="icon-btn"
+        >
             <span className={`material-icons ${liked ? "liked-color" : ""}`}>
                 {liked? "favorite" : "favorite_border"}
             </span>
