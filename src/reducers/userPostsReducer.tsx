@@ -1,15 +1,15 @@
 import { TfetchPosts } from '../types';
 
-const postsReducer = (state=[], action : TfetchPosts) => {
+const userPostsReducer = (state=[], action : TfetchPosts) => {
     
     switch(action.type){
-        case 'FETCH_POSTS':
+        case 'FETCH_USER_POSTS':
             return [...state,...action.payload];
-        case 'CLEAR_POSTS':
+        case 'CLEAR_USER_POSTS':
             return [];
         default:
             return state;
     }
 }
 
-export default postsReducer;
+export default userPostsReducer;

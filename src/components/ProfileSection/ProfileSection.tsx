@@ -5,6 +5,7 @@ import React, {
   useState,
 } from 'react';
 
+import Loader from 'react-loader-spinner';
 import { connect } from 'react-redux';
 import { useParams } from 'react-router-dom';
 
@@ -16,6 +17,7 @@ import {
   storeState,
   user,
 } from '../../types';
+import UserPosts from './UserPosts';
 
 type paramTypes = {
     username: string;
@@ -49,7 +51,13 @@ const ProfileSection = ({ clearUser, fetchUser, user }: propTypes) => {
     const name = first_name+" " + last_name;
     return (
         userIsEmpty ?
-            <div>Loading the User</div> :
+            <div><Loader
+            type="ThreeDots"
+            color="#BBBBBB"
+            height={50}
+            width={50}
+            timeout={3000} //3 secs
+          /></div> :
             <>
             <div className="ps27UserHeader">
                 <div className="ps27ImgContainer">
@@ -82,10 +90,7 @@ const ProfileSection = ({ clearUser, fetchUser, user }: propTypes) => {
                     </div>
                 </div>
             </div>
-            <hr></hr>
-            <div className="up56Container">
-
-            </div>
+            <UserPosts username={username} pages={Math.ceil(total_photos/9)}/>
             </>
             
     )

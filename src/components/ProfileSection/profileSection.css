@@ -6,9 +6,9 @@
 }
 
 .ps27UserHeader{
-    width: 60%;
+    width: 935px;
     display: flex;
-    justify-content: flex-start;
+    justify-content: space-evenly;
 
 }
 
@@ -31,7 +31,7 @@
 
 .ps27UserDetails{
     display: flex;
-    flex-direction: column;
+    flex-direction: column;   
 }
 
 .ud23FirstRow{
@@ -99,6 +99,32 @@
 
 .ud23BioContent{
     display: inline-block;
+    max-width: 680px;
     font-size: 0.8rem;
-    max-width: 30vw;
+}
+
+.up56Container{
+    margin-top: 36px;
+    max-width: 935px;
+    width: 935px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.up56ImgContainer{
+    display: flex;
+    width: 293px;
+    height: 293px;
+    overflow: hidden;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 28px;
+}
+
+.up56Img{
+    width: 293px;
+    height: 293px;
+    object-fit: cover;
 }

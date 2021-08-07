@@ -54,4 +54,5 @@ export type TfetchUser = {
 export type storeState = {
     posts: post[];
     user: user;
+    userPosts: post[];
 }

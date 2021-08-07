@@ -1,10 +1,17 @@
 import React from 'react';
 
 import InfiniteScroll from 'react-infinite-scroll-component';
+import Loader from 'react-loader-spinner';
 import { connect } from 'react-redux';
 
-import { fetchPosts } from '../../actions';
-import { post } from '../../types';
+import {
+  clearPosts,
+  fetchPosts,
+} from '../../actions';
+import {
+  post,
+  storeState,
+} from '../../types';
 import Post from './Post/';
 
 type MyState = {
@@ -13,7 +20,10 @@ type MyState = {
 
 type MyProps = {
     fetchPosts: () => void;
+    clearPosts: () => void;
     posts: post[];
+    userPosts: post[];
+
 }
 
 class NewsFeed extends React.Component<MyProps, MyState>{
@@ -22,16 +32,26 @@ class NewsFeed extends React.Component<MyProps, MyState>{
         this.props.fetchPosts();
     }
 
+    componentWillUnmount(){
+        this.props.clearPosts();
+    }
+
     render() {
-        const posts = this.props.posts;
-        console.log(posts);
+        const {posts,userPosts} = this.props;
+        
         return (
             <div className="newsfeed">
                 <InfiniteScroll
                     dataLength={posts.length}
                     next={this.props.fetchPosts}
                     hasMore={true}
-                    loader={<h3>Loading</h3>}
+                    loader={<Loader
+                        type="ThreeDots"
+                        color="#BBBBBB"
+                        height={50}
+                        width={50}
+                        timeout={3000} //3 secs
+                      />}
                 >
                         {posts.map((post) => {
                             return (
@@ -44,10 +64,11 @@ class NewsFeed extends React.Component<MyProps, MyState>{
     };
 }
 
-const mapStateToProps = (state: { posts: post[] }) => {
-    return { posts: state.posts };
+const mapStateToProps = (state: storeState) => {
+    return { posts: state.posts, userPosts: state.userPosts };
 }
 
 export default connect(mapStateToProps, {
-    fetchPosts
+    fetchPosts,
+    clearPosts
 })(NewsFeed);
