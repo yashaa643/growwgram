@@ -3,6 +3,10 @@ import React from 'react';
 import InfiniteScroll from 'react-infinite-scroll-component';
 import Loader from 'react-loader-spinner';
 import { connect } from 'react-redux';
+import {
+  Route,
+  Switch,
+} from 'react-router-dom';
 
 import {
   clearUserPosts,
@@ -12,6 +16,8 @@ import {
   post,
   storeState,
 } from '../../types';
+import Post from '../NewsFeed/Post/Post';
+import GridView from './GridView';
 
 type propTypes = {
     userPosts: post[];
@@ -19,6 +25,7 @@ type propTypes = {
     clearUserPosts: () => void;
     username: string;
     pages: number;
+    history: any;
 }
 
 class UserPosts extends React.Component<propTypes>{
@@ -46,10 +53,19 @@ class UserPosts extends React.Component<propTypes>{
     }
 
     render(){
-        const {userPosts,pages} = this.props;
+
+        const {userPosts,pages,username,history} = this.props;
         const {page} = this.state;
         return (
-            <>
+            <>  
+                <div className="up56Nav">
+                    <button onClick={() => {history.push("/"+ username)}}>
+                    <span className="material-icons">apps</span>
+                    Grid</button>
+                    <button onClick={() => {history.push("/"+ username + "/feed")}}>
+                    <span className="material-icons">pages</span>NewsFeed</button>
+                </div>
+                
                  <InfiniteScroll
                     dataLength={userPosts.length}
                     next={this.fetchMorePosts}
@@ -62,19 +78,22 @@ class UserPosts extends React.Component<propTypes>{
                         timeout={3000} //3 secs
                       />}
                 > 
-                <div className="up56Container">
-                {userPosts.map(({ likes, id, urls, alt_description }) => {
-                    return (
-                        <div key={id} className="up56ImgContainer">
-                            <div className="up56Hov">
-                                <span className="material-icons">favorite </span>
-                                <span style={{marginLeft : "5px"}} className="up56HovContent">{likes}</span>   
-                                </div>
-                            <img className="up56Img" src={urls.small} alt={alt_description}></img>
-                        </div>
-                    )  
-                })}
-                </div>
+                
+                <Switch>
+                    <Route exact path={"/"+ username}>
+                    <GridView userPosts={userPosts}></GridView>
+                  </Route>
+                  <Route path={"/"+ username + "/feed"}>
+                  <div className="up56PostViewContainer">
+                  {userPosts.map((post) => {
+                            return (
+                                <Post key={post.id} post={post}></Post>
+                            )
+                        })}
+                    </div>
+                  </Route>
+                </Switch>
+                
                 </InfiniteScroll >
                 </>
             

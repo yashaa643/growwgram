@@ -7,7 +7,10 @@ import React, {
 
 import Loader from 'react-loader-spinner';
 import { connect } from 'react-redux';
-import { useParams } from 'react-router-dom';
+import {
+  useHistory,
+  useParams,
+} from 'react-router-dom';
 
 import {
   clearUser,
@@ -47,6 +50,8 @@ const ProfileSection = ({ clearUser, fetchUser, user }: propTypes) => {
         setFollowed(!followed);
     }
 
+    const history = useHistory(); 
+    console.log(history);
     const userIsEmpty = Object.keys(user).length === 0 && user.constructor === Object;
     const name = first_name+" " + last_name;
     return (
@@ -90,7 +95,7 @@ const ProfileSection = ({ clearUser, fetchUser, user }: propTypes) => {
                     </div>
                 </div>
             </div>
-            <UserPosts username={username} pages={Math.ceil(total_photos/9)}/>
+            <UserPosts history = {history} username={username} pages={Math.ceil(total_photos/9)}/>
             </>
             
     )

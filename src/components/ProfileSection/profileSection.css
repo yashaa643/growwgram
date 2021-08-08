@@ -143,3 +143,33 @@
 .up56Hov:hover{
     opacity: 1;
 }
+
+.up56Nav{
+    margin-top: 44px;
+    width: 935px;
+    height: 52px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+    border-top: 1px solid var(--border-color);
+}
+
+.up56Nav button{
+    display: flex;
+    height: inherit;
+    color: var(--light-text);
+    background-color: transparent;
+    border: none;
+    text-transform: uppercase;
+    align-items: center;
+}
+
+.up56Nav button:focus,button:hover{
+    color: black;
+    border-top: 1px solid black;
+}
+
+.up56PostViewContainer{
+    margin-top: 36px;
+}
