@@ -37,7 +37,7 @@ class NewsFeed extends React.Component<MyProps, MyState>{
     }
 
     render() {
-        const {posts,userPosts} = this.props;
+        const {posts} = this.props;
         
         return (
             <div className="newsfeed">
