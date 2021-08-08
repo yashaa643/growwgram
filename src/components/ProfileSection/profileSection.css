@@ -114,17 +114,32 @@
 }
 
 .up56ImgContainer{
-    display: flex;
     width: 293px;
     height: 293px;
     overflow: hidden;
-    justify-content: center;
-    align-items: center;
     margin-bottom: 28px;
 }
 
 .up56Img{
+
     width: 293px;
     height: 293px;
     object-fit: cover;
+}
+
+.up56Hov{
+    color: white;
+    font-weight: bold;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    width: 293px;
+    height: 293px;
+    position: absolute;
+    background-color: rgb(0,0,0,0.5);
+}
+
+.up56Hov:hover{
+    opacity: 1;
 }

@@ -53,7 +53,7 @@ class UserPosts extends React.Component<propTypes>{
                  <InfiniteScroll
                     dataLength={userPosts.length}
                     next={this.fetchMorePosts}
-                    hasMore={page < pages}
+                    hasMore={page <= pages}
                     loader={<Loader
                         type="ThreeDots"
                         color="#BBBBBB"
@@ -63,12 +63,16 @@ class UserPosts extends React.Component<propTypes>{
                       />}
                 > 
                 <div className="up56Container">
-                {userPosts.map(({ id, urls, alt_description }) => {
+                {userPosts.map(({ likes, id, urls, alt_description }) => {
                     return (
                         <div key={id} className="up56ImgContainer">
+                            <div className="up56Hov">
+                                <span className="material-icons">favorite </span>
+                                <span style={{marginLeft : "5px"}} className="up56HovContent">{likes}</span>   
+                                </div>
                             <img className="up56Img" src={urls.small} alt={alt_description}></img>
                         </div>
-                    )
+                    )  
                 })}
                 </div>
                 </InfiniteScroll >

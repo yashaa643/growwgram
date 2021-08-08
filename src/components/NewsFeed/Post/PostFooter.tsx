@@ -2,6 +2,8 @@ import './post.css';
 
 import React, { useState } from 'react';
 
+import { useHistory } from 'react-router-dom';
+
 import { timePostedAgo } from '../../../utils/utils';
 import LikeSection from './LikeSection';
 
@@ -22,13 +24,15 @@ const PostFooter = ({created_at,description,username,likes,liked_by_user}:MyProp
         setlikesCount(likesCount-1);
     }
 
+    let history = useHistory();
+
     return (
         <div className="post-footer">
             <LikeSection liked_by_user={liked_by_user} updateLikes={updateLikes}></LikeSection>
             <div className="post-details">
                 <div className="bold-text"> {likesCount} likes</div>
                 <p className="regular-text">
-                    <span className="bold-text">{username}</span>
+                    <span className="bold-text" onClick = {() => {history.push("/"+ username)}}>{username}</span>
                     &nbsp;{description}
                 </p>
                 <p className="light-text">{timePostedAgo(created_at)}</p>
