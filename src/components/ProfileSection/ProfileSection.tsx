@@ -44,14 +44,11 @@ const ProfileSection = ({ clearUser, fetchUser, user }: propTypes) => {
             clearUser();
         })
     }, [username, fetchUser, clearUser])
-    console.log(user);
 
     const handleFollowers:React.MouseEventHandler<HTMLDivElement> | undefined = () => {
         setFollowed(!followed);
     }
-
     const history = useHistory(); 
-    console.log(history);
     const userIsEmpty = Object.keys(user).length === 0 && user.constructor === Object;
     const name = first_name+" " + last_name;
     return (

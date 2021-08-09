@@ -34,39 +34,39 @@ class UserPosts extends React.Component<propTypes>{
         page: 1,
         username: this.props.username,
     }
-    
-    componentDidMount(){
-        const {page,username} = this.state;
-        this.props.fetchAUserPosts(username,page);
-        this.setState({page: page + 1});
+
+    componentDidMount() {
+        const { page, username } = this.state;
+        this.props.fetchAUserPosts(username, page);
+        this.setState({ page: page + 1 });
     }
 
-    componentWillUnmount(){
+    componentWillUnmount() {
         this.props.clearUserPosts();
     }
 
     fetchMorePosts = () => {
-        const {username} = this.props;
-        const {page} = this.state;
-        this.props.fetchAUserPosts(username,page)
-        this.setState({page: page + 1});
+        const { username } = this.props;
+        const { page } = this.state;
+        this.props.fetchAUserPosts(username, page)
+        this.setState({ page: page + 1 });
     }
 
-    render(){
+    render() {
 
-        const {userPosts,pages,username,history} = this.props;
-        const {page} = this.state;
+        const { userPosts, pages, username, history } = this.props;
+        const { page } = this.state;
         return (
-            <>  
+            <>
                 <div className="up56Nav">
-                    <button className="up56NavBtn" onClick={() => {history.push("/"+ username)}}>
-                    <span className="material-icons">apps</span>
-                    Grid</button>
-                    <button className="up56NavBtn" onClick={() => {history.push("/"+ username + "/feed")}}>
-                    <span className="material-icons">pages</span>NewsFeed</button>
+                    <button className="up56NavBtn" onClick={() => { history.push("/" + username) }}>
+                        <span className="material-icons">apps</span>
+                        Grid</button>
+                    <button className="up56NavBtn" onClick={() => { history.push("/" + username + "/feed") }}>
+                        <span className="material-icons">pages</span>NewsFeed</button>
                 </div>
-                
-                 <InfiniteScroll
+
+                <InfiniteScroll
                     dataLength={userPosts.length}
                     next={this.fetchMorePosts}
                     hasMore={page <= pages}
@@ -76,30 +76,30 @@ class UserPosts extends React.Component<propTypes>{
                         height={50}
                         width={50}
                         timeout={3000} //3 secs
-                      />}
-                > 
-                
-                <Switch>
-                    <Route exact path={"/"+ username}>
-                    <GridView userPosts={userPosts}></GridView>
-                  </Route>
-                  <Route path={"/"+ username + "/feed"}>
-                  <div className="up56PostViewContainer">
-                  {userPosts.map((post) => {
-                            return (
-                                <Post key={post.id} post={post}></Post>
-                            )
-                        })}
-                    </div>
-                  </Route>
-                </Switch>
-                
+                    />}
+                >
+
+                    <Switch>
+                        <Route exact path={"/" + username}>
+                            <GridView userPosts={userPosts}></GridView>
+                        </Route>
+                        <Route path={"/" + username + "/feed"}>
+                            <div className="up56PostViewContainer">
+                                {userPosts.map((post) => {
+                                    return (
+                                        <Post key={post.id} post={post}></Post>
+                                    )
+                                })}
+                            </div>
+                        </Route>
+                    </Switch>
+
                 </InfiniteScroll >
-                </>
-            
+            </>
+
         )
     }
-   
+
 }
 
 const mapStateToProps = (state: storeState) => {

@@ -1,40 +1,39 @@
-:root{
-    --border-color: rgb(200,200,200,0.7);
-    --light-text:  rgb(142,142,142,1);
+:root {
+    --border-color: rgb(200, 200, 200, 0.7);
+    --light-text: rgb(142, 142, 142, 1);
     --liked-color: #ed4956;
     --follow-color: #0095f6;
 }
 
-.ps27UserHeader{
+.ps27UserHeader {
     width: 935px;
     display: flex;
     justify-content: space-evenly;
-
 }
 
-.ps27UserProfileIcon{
+.ps27UserProfileIcon {
     border: 1px solid var(--border-color);
     border-radius: 50%;
     height: 150px;
     width: 150px;
 }
 
-.ps27ImgContainer{
+.ps27ImgContainer {
     padding: 0 20px;
     width: 198px;
     margin-right: 30px;
 }
 
-.username-text{
+.username-text {
     font-size: 1.6rem;
 }
 
-.ps27UserDetails{
+.ps27UserDetails {
     display: flex;
-    flex-direction: column;   
+    flex-direction: column;
 }
 
-.ud23FirstRow{
+.ud23FirstRow {
     display: flex;
     align-items: center;
     justify-content: flex-start;
@@ -42,12 +41,12 @@
     margin-top: 10px;
 }
 
-.ud23ButtonRow{
+.ud23ButtonRow {
     display: flex;
     margin-left: 20px;
 }
 
-.ud23ButtonRow button{
+.ud23ButtonRow button {
     background-color: transparent;
     border: 1px solid var(--border-color);
     border-radius: 4px;
@@ -59,11 +58,11 @@
     margin-right: 6px;
 }
 
-.ud23FollowButton{
+.ud23FollowButton {
     margin-left: 20px;
 }
 
-.ud23FollowButton button{
+.ud23FollowButton button {
     color: white;
     border: 1px solid transparent;
     background-color: var(--follow-color);
@@ -76,7 +75,7 @@
     margin-right: 6px;
 }
 
-.ud23CountRow{
+.ud23CountRow {
     margin-bottom: 20px;
     display: flex;
     flex-wrap: nowrap;
@@ -86,24 +85,24 @@
     margin-top: 0;
 }
 
-.ud23CountRow li{
+.ud23CountRow li {
     list-style-type: none;
     margin-right: 40px;
     font-size: 0.9rem;
 }
 
-.ud23BioRow h1{
+.ud23BioRow h1 {
     margin: 0;
     font-size: 0.9rem;
 }
 
-.ud23BioContent{
+.ud23BioContent {
     display: inline-block;
     max-width: 680px;
     font-size: 0.8rem;
 }
 
-.up56Container{
+.up56Container {
     margin-top: 36px;
     max-width: 935px;
     width: 935px;
@@ -113,21 +112,20 @@
     flex-wrap: wrap;
 }
 
-.up56ImgContainer{
+.up56ImgContainer {
     width: 293px;
     height: 293px;
     overflow: hidden;
     margin-bottom: 28px;
 }
 
-.up56Img{
-
+.up56Img {
     width: 293px;
     height: 293px;
     object-fit: cover;
 }
 
-.up56Hov{
+.up56Hov {
     color: white;
     font-weight: bold;
     display: flex;
@@ -137,14 +135,14 @@
     width: 293px;
     height: 293px;
     position: absolute;
-    background-color: rgb(0,0,0,0.5);
+    background-color: rgb(0, 0, 0, 0.5);
 }
 
-.up56Hov:hover{
+.up56Hov:hover {
     opacity: 1;
 }
 
-.up56Nav{
+.up56Nav {
     margin-top: 44px;
     width: 935px;
     height: 52px;
@@ -155,7 +153,7 @@
     border-top: 1px solid var(--border-color);
 }
 
-.up56Nav button{
+.up56Nav button {
     display: flex;
     height: inherit;
     color: var(--light-text);
@@ -165,15 +163,16 @@
     align-items: center;
 }
 
-.up56NavBtn:focus{
-    color: black;
-    border-top: 1px solid black;
-}
-.up56NavBtn:hover{
+.up56NavBtn:focus {
     color: black;
     border-top: 1px solid black;
 }
 
-.up56PostViewContainer{
+.up56NavBtn:hover {
+    color: black;
+    border-top: 1px solid black;
+}
+
+.up56PostViewContainer {
     margin-top: 36px;
 }

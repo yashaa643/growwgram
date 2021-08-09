@@ -102,11 +102,16 @@
     display: flex;
     flex-direction: row;
     justify-content: flex-start;
+    cursor: pointer;
 }
 
 .sc94SearchUser img{
     border-radius: 50%;
     scale: 0.8;
+}
+
+.sc94SearchUser:hover{
+    background-color: #FAFAFA;
 }
 
 .sc94Name{
