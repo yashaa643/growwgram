@@ -5,6 +5,8 @@ import React, {
   useState,
 } from 'react';
 
+import { useHistory } from 'react-router-dom';
+
 import unsplash from '../../api/unsplash';
 import { user } from '../../types';
 
@@ -13,6 +15,8 @@ const SearchComponent = () => {
     const [searchUserList, setSearchUserList] = useState<user[]>([]);
     const [searchTerm, setSearchTerm] = useState("");
     const [debouncedTerm, setDebouncedTerm] = useState("");
+
+    const history = useHistory();
 
     useEffect(() => {
         const timerId = setTimeout(() => {
@@ -55,6 +59,11 @@ const SearchComponent = () => {
         document.getElementById("sc94Popover")!.style.position = "absolute";
     }
 
+    const openUser = (username:string) => {
+        history.push("/"+username);
+        hidePopOver();
+    }
+
     console.log(searchUserList);
 
     return (
@@ -62,7 +71,6 @@ const SearchComponent = () => {
             <input
             value = {searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
-            onBlur={hidePopOver}
             onFocus={displayPopOver} 
             type="text"
             placeholder={"Search"} />
@@ -70,7 +78,7 @@ const SearchComponent = () => {
                 <div id="sc94PopoverContent">
                     {searchUserList.map(({id,username,instagram_username,profile_image,first_name,last_name}) => {
                         return(
-                            <div className="sc94SearchUser" key={id}>
+                            <div onClick={(e) => openUser(username)} className="sc94SearchUser" key={id}>
                                <img src={profile_image.medium} alt={instagram_username}></img>
                                <div className="sc94Name">
                                    <p>{instagram_username || username}</p>
