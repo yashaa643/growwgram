@@ -165,7 +165,11 @@
     align-items: center;
 }
 
-.up56Nav button:focus,button:hover{
+.up56NavBtn:focus{
+    color: black;
+    border-top: 1px solid black;
+}
+.up56NavBtn:hover{
     color: black;
     border-top: 1px solid black;
 }

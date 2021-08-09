@@ -59,10 +59,10 @@ class UserPosts extends React.Component<propTypes>{
         return (
             <>  
                 <div className="up56Nav">
-                    <button onClick={() => {history.push("/"+ username)}}>
+                    <button className="up56NavBtn" onClick={() => {history.push("/"+ username)}}>
                     <span className="material-icons">apps</span>
                     Grid</button>
-                    <button onClick={() => {history.push("/"+ username + "/feed")}}>
+                    <button className="up56NavBtn" onClick={() => {history.push("/"+ username + "/feed")}}>
                     <span className="material-icons">pages</span>NewsFeed</button>
                 </div>
                 

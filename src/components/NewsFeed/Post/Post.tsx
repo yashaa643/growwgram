@@ -11,7 +11,6 @@ type MyProps = {
 }
 
 const Post = ({post}:MyProps) => {
-    console.log(post);
     const {created_at, liked_by_user,likes, urls, description, alt_description , user} = post;
     return(
         <div className="post-container">
