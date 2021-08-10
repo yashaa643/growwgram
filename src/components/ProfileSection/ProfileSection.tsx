@@ -4,7 +4,10 @@ import React, { useEffect } from 'react';
 
 import Loader from 'react-loader-spinner';
 import { connect } from 'react-redux';
-import { useParams } from 'react-router-dom';
+import {
+  useHistory,
+  useParams,
+} from 'react-router-dom';
 
 import {
   clearUser,
@@ -27,11 +30,10 @@ type propTypes = {
     fetchUser: (username: string) => void,
     user: user,
     error: boolean,
-    history: any
 }
 
 
-const ProfileSection = ({ history, clearUser, fetchUser, user, error }: propTypes) => {
+const ProfileSection = ({ clearUser, fetchUser, user, error }: propTypes) => {
     const { username } = useParams<paramTypes>();
     const { total_photos } = user;
 
@@ -44,6 +46,8 @@ const ProfileSection = ({ history, clearUser, fetchUser, user, error }: propType
     },[clearUser,fetchUser,username])
 
     const userIsEmpty = Object.keys(user).length === 0 && user.constructor === Object;
+
+    const history = useHistory();
 
     console.log(error);
 
