@@ -59,7 +59,7 @@ class UserPosts extends React.Component<propTypes>{
         return (
             <>  
                 <div className="up56Nav">
-                    <button className="up56NavBtn" onClick={() => {history.push("/users/"+ username)}}>
+                    <button className="up56NavBtn" onClick={() => {history.push("/users/"+ username+'/grid')}}>
                     <span className="material-icons">apps</span>
                     Grid</button>
                     <button className="up56NavBtn" onClick={() => {history.push("/users/"+ username + "/feed")}}>
@@ -80,7 +80,7 @@ class UserPosts extends React.Component<propTypes>{
                 > 
                 
                 <Switch>
-                    <Route exact path={"/users/"+ username}>
+                    <Route exact path={"/users/"+ username + "/grid"}>
                     <GridView userPosts={userPosts}></GridView>
                   </Route>
                   <Route path={"/users/"+ username + "/feed"}>
@@ -91,6 +91,9 @@ class UserPosts extends React.Component<propTypes>{
                             )
                         })}
                     </div>
+                  </Route>
+                  <Route path={"/users/"+ username + "*"}>
+                        Please Select Correct View
                   </Route>
                 </Switch>
                 

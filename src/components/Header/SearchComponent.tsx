@@ -5,6 +5,7 @@ import React, {
   useState,
 } from 'react';
 
+import Loader from 'react-loader-spinner';
 import { useHistory } from 'react-router-dom';
 
 import unsplash from '../../api/unsplash';
@@ -60,23 +61,35 @@ const SearchComponent = () => {
     }
 
     const openUser = (username:string) => {
-        history.push("/"+username);
+        history.push("/users/"+username);
+        setSearchTerm("");
         hidePopOver();
     }
-    
+
+
     return (
         <div className="sc94Container">
             <input
             value = {searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
             onFocus={displayPopOver} 
+            onBlur={(e) => {hidePopOver()}}
             type="text"
             placeholder={"Search"} />
             <div id="sc94Popover">
+                {
+                    (searchTerm === "") && (searchUserList.length === 0) && <div>
+                        Waiting for you to type
+                    </div>
+                }
+                {
+                    (searchTerm) && (searchUserList.length === 0) && <div style={{marginLeft: "50%"}}><Loader type="ThreeDots" color="gray" height={20} width={20}/></div> 
+                }
+                {searchUserList.length > 0 &&
                 <div id="sc94PopoverContent">
                     {searchUserList.map(({id,username,instagram_username,profile_image,first_name,last_name}) => {
                         return(
-                            <div onClick={(e) => openUser(username)} className="sc94SearchUser" key={id}>
+                            <div onMouseDown={(e) => openUser(username)} className="sc94SearchUser" key={id}>
                                <img src={profile_image.medium} alt={instagram_username}></img>
                                <div className="sc94Name">
                                    <p>{instagram_username || username}</p>
@@ -86,7 +99,8 @@ const SearchComponent = () => {
                         )
                     })}
                 </div>
-            </div>     
+                }
+            </div>   
         </div>
     )
 }

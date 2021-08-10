@@ -15,7 +15,7 @@ const PostHeader = ({user} : MyProps) => {
        <>
             <img className="header-icon" src={profile_image.small} alt="profile_icon"></img>
             {/* <Link to={`/${username}`}><a className="header-user bold-text" href="_blank">{username}</a></Link> */}
-            <div onClick = {() => {history.push("users/"+ username)}} className="header-user bold-text">{username}</div>
+            <div onClick = {() => {history.push("/users/"+ username+"/grid/")}} className="header-user bold-text">{username}</div>
        </>
     )
 }
