@@ -1,4 +1,5 @@
 import './app.css';
+import './typography.css';
 
 import React from 'react';
 

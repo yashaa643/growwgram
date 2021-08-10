@@ -1,4 +1,5 @@
 
+
 body {
     background-color: #fafafa;
     padding: 0;
@@ -9,7 +10,6 @@ body {
     justify-content: center;
     align-items: center;
     padding: 0px;
-    font-family: 'Montserrat';
     margin-top: 84px;
     letter-spacing: 1px;
 }

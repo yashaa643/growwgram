@@ -79,7 +79,7 @@ const SearchComponent = () => {
             <div id="sc94Popover">
                 {
                     (searchTerm === "") && (searchUserList.length === 0) && <div>
-                        Waiting for you to type
+                        <p>Waiting for you to type</p>
                     </div>
                 }
                 {
@@ -92,7 +92,7 @@ const SearchComponent = () => {
                             <div onMouseDown={(e) => openUser(username)} className="sc94SearchUser" key={id}>
                                <img src={profile_image.medium} alt={instagram_username}></img>
                                <div className="sc94Name">
-                                   <p>{instagram_username || username}</p>
+                                   <h6>{instagram_username || username}</h6>
                                    <p style={{color:"rgb(142,142,142,1)"}}>{first_name} {last_name}</p>
                                </div>
                             </div>

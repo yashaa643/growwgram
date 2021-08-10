@@ -93,7 +93,7 @@ class UserPosts extends React.Component<propTypes>{
                     </div>
                   </Route>
                   <Route path={"/users/"+ username + "*"}>
-                        Please Select Correct View
+                        Please Select Grid or NewsFeed
                   </Route>
                 </Switch>
                 

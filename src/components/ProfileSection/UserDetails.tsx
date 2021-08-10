@@ -26,7 +26,7 @@ const UserDetails = ({user}:MyProps) => {
                 </div>
                 <div className="ps27UserDetails">
                     <div className="ud23FirstRow">
-                        <span className="username-text">{username}</span>
+                        <h6 className="username-text">{username}</h6>
                         {followed ?
                         <div className="ud23ButtonRow" onClick={handleFollowers}>
                             <button >Message</button>
