@@ -1,8 +1,10 @@
 import { TfetchUser } from '../types';
 
-const postsReducer = (state={}, action : TfetchUser) => {
+const userReducer = (state={}, action : TfetchUser ) => {
     
     switch(action.type){
+        case 'FETCH_USER_ERROR':
+            return action.payload;
         case 'FETCH_USER':
             return action.payload;
         case 'CLEAR_USER' :
@@ -12,4 +14,4 @@ const postsReducer = (state={}, action : TfetchUser) => {
     }
 }
 
-export default postsReducer;
+export default userReducer;

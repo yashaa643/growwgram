@@ -1,0 +1,22 @@
+
+.nf13Div{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.nf13Img{
+    width: 100%;
+    height: 100%;
+    margin-bottom: 24px;
+}
+
+.nf13Div a{
+    text-decoration: none;
+    color: inherit;
+}
+
+.nf13Div a:hover{
+    cursor: pointer;
+}

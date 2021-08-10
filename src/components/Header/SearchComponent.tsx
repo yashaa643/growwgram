@@ -63,9 +63,7 @@ const SearchComponent = () => {
         history.push("/"+username);
         hidePopOver();
     }
-
-    console.log(searchUserList);
-
+    
     return (
         <div className="sc94Container">
             <input

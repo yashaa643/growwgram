@@ -59,10 +59,10 @@ class UserPosts extends React.Component<propTypes>{
         return (
             <>  
                 <div className="up56Nav">
-                    <button className="up56NavBtn" onClick={() => {history.push("/"+ username)}}>
+                    <button className="up56NavBtn" onClick={() => {history.push("/users/"+ username)}}>
                     <span className="material-icons">apps</span>
                     Grid</button>
-                    <button className="up56NavBtn" onClick={() => {history.push("/"+ username + "/feed")}}>
+                    <button className="up56NavBtn" onClick={() => {history.push("/users/"+ username + "/feed")}}>
                     <span className="material-icons">pages</span>NewsFeed</button>
                 </div>
                 
@@ -80,10 +80,10 @@ class UserPosts extends React.Component<propTypes>{
                 > 
                 
                 <Switch>
-                    <Route exact path={"/"+ username}>
+                    <Route exact path={"/users/"+ username}>
                     <GridView userPosts={userPosts}></GridView>
                   </Route>
-                  <Route path={"/"+ username + "/feed"}>
+                  <Route path={"/users/"+ username + "/feed"}>
                   <div className="up56PostViewContainer">
                   {userPosts.map((post) => {
                             return (

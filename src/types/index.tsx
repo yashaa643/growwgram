@@ -42,17 +42,24 @@ export type post = {
     twitter_username: string,
 }
 
+export type Terror = {
+    type:string,
+    payload: boolean
+}
+
 
 export type TfetchPosts = {
     type: string, payload: post[];
 }
 
 export type TfetchUser = {
-    type: string, payload: user | {};
+    type: string;
+    payload: user | {}
 }
 
 export type storeState = {
     posts: post[];
     user: user;
     userPosts: post[];
+    error: boolean;
 }
