@@ -6,7 +6,7 @@
 }
 
 .ps27UserHeader{
-    width: 935px;
+    max-width: 935px;
     display: flex;
     justify-content: space-evenly;
 
@@ -106,7 +106,6 @@
 .up56Container{
     margin-top: 36px;
     max-width: 935px;
-    width: 935px;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -176,4 +175,16 @@
 
 .up56PostViewContainer{
     margin-top: 36px;
+}
+
+@media only screen and (max-width: 879px) {
+    
+    .up56Container{
+        margin-top: 36px;
+        max-width: 935px;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-evenly;
+        flex-wrap: wrap;
+    }
 }
