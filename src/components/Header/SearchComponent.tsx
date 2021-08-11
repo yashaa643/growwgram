@@ -10,6 +10,7 @@ import { useHistory } from 'react-router-dom';
 
 import unsplash from '../../api/unsplash';
 import { user } from '../../types';
+import Popover from './Popover';
 
 const SearchComponent = () => {
 
@@ -64,25 +65,9 @@ const SearchComponent = () => {
             type="text"
             placeholder={"Search"} />
             <div id="sc94Popover">
-                {(!searchTerm) }
-
-                {(searchTerm) && (searchUserList.length === 0) && <div style={{marginLeft: "50%"}}><Loader type="ThreeDots" color="gray" height={20} width={20}/></div>}
-               
-                {searchUserList.length > 0 &&
-                <div id="sc94PopoverContent">
-                    {searchUserList.map(({id,username,instagram_username,profile_image,first_name,last_name}) => {
-                        return(
-                            <div onMouseDown={() => openUser(username)} className="sc94SearchUser" key={id}>
-                               <img src={profile_image.medium} alt={instagram_username}></img>
-                               <div className="sc94Name">
-                                   <h6>{instagram_username || username}</h6>
-                                   <p style={{color:"rgb(142,142,142,1)"}}>{first_name} {last_name}</p>
-                               </div>
-                            </div>
-                        ) 
-                    })}
-                </div>
-                }
+                {(!searchTerm)}
+                {(searchTerm) && (searchUserList.length === 0) && <div style={{marginLeft: "50%"}}><Loader type="ThreeDots" color="gray" height={20} width={20}/></div>}    
+                {searchUserList.length > 0 && <Popover searchUserList={searchUserList} openUser={openUser}></Popover> }
             </div>   
         </div>
     )
