@@ -61,9 +61,16 @@ const SearchComponent = () => {
     }
 
     const openUser = (username:string) => {
-        history.push("/users/"+username);
+        history.push("/"+username);
         setSearchTerm("");
         hidePopOver();
+    }
+
+    const setPopoverStatus = (term:string) =>{
+        setSearchTerm(term);
+        (term === "") ? 
+        hidePopOver() :
+        displayPopOver()
     }
 
 
@@ -71,16 +78,13 @@ const SearchComponent = () => {
         <div className="sc94Container">
             <input
             value = {searchTerm}
-            onChange={(e) => setSearchTerm(e.target.value)}
-            onFocus={displayPopOver} 
-            onBlur={(e) => {hidePopOver()}}
+            onChange={(e) => setPopoverStatus(e.target.value)}
+            onBlur={() => setPopoverStatus("")}
             type="text"
             placeholder={"Search"} />
             <div id="sc94Popover">
                 {
-                    (searchTerm === "") && (searchUserList.length === 0) && <div>
-                        <p>Waiting for you to type</p>
-                    </div>
+                    (!searchTerm)
                 }
                 {
                     (searchTerm) && (searchUserList.length === 0) && <div style={{marginLeft: "50%"}}><Loader type="ThreeDots" color="gray" height={20} width={20}/></div> 
@@ -89,14 +93,14 @@ const SearchComponent = () => {
                 <div id="sc94PopoverContent">
                     {searchUserList.map(({id,username,instagram_username,profile_image,first_name,last_name}) => {
                         return(
-                            <div onMouseDown={(e) => openUser(username)} className="sc94SearchUser" key={id}>
+                            <div onMouseDown={() => openUser(username)} className="sc94SearchUser" key={id}>
                                <img src={profile_image.medium} alt={instagram_username}></img>
                                <div className="sc94Name">
                                    <h6>{instagram_username || username}</h6>
                                    <p style={{color:"rgb(142,142,142,1)"}}>{first_name} {last_name}</p>
                                </div>
                             </div>
-                        )
+                        ) 
                     })}
                 </div>
                 }
