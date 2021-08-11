@@ -23,7 +23,7 @@ const App = () => {
           <Switch>
             <Route exact path="/" children={<NewsFeed/>} />
             <Route path="/:username" children={<ProfileSection/>} />
-            <Route path="*" children={<NotFound></NotFound>}></Route>
+            <Route path="*" children={<NotFound errorMessage="BAD_URL"></NotFound>}></Route>
           </Switch>
         </div>
       </Router>

@@ -12,6 +12,7 @@ import {
   clearUserPosts,
   fetchAUserPosts,
 } from '../../actions';
+import NotFound from '../../errors/NotFound/NotFound';
 import {
   post,
   storeState,
@@ -25,6 +26,10 @@ type propTypes = {
     clearUserPosts: () => void;
     username: string;
     pages: number;
+    error : {
+        err : boolean,
+        errMessage : string
+    }
 }
 
 class UserPosts extends React.Component<propTypes>{
@@ -41,21 +46,8 @@ class UserPosts extends React.Component<propTypes>{
         this.setState({ page: page + 1 });
     }
 
-    componentWillUnmount() {
-        this.props.clearUserPosts();
-    }
-
-    showGridView() {
-        this.setState({
-            isGrid : true,
-        })
-    }
-
-    showPostView() {
-        this.setState({
-            isGrid : false,
-        })
-    }
+    showGridView = () => this.setState({isGrid : true,})
+    showPostView = () => this.setState({isGrid : false,})
 
     fetchMorePosts = () => {
         const { username } = this.props;
@@ -66,7 +58,7 @@ class UserPosts extends React.Component<propTypes>{
 
     render() {
 
-        const { userPosts, pages, username } = this.props;
+        const { error, userPosts, pages, username } = this.props;
         const { page ,isGrid} = this.state;
         return (
             <>
@@ -78,6 +70,8 @@ class UserPosts extends React.Component<propTypes>{
                         <span className="material-icons">pages</span>Post</button>
                 </div>
 
+               { (error.err) ?
+                <NotFound  errorMessage = {error.errMessage}/> :
                 <InfiniteScroll
                     dataLength={userPosts.length}
                     next={this.fetchMorePosts}
@@ -106,17 +100,13 @@ class UserPosts extends React.Component<propTypes>{
                         </Route>
                     </Switch>
 
-                </InfiniteScroll >
+                </InfiniteScroll >}
             </>
-
-        )
-    }
-
-}
+        )}}
 
 const mapStateToProps = (state: storeState) => {
-    const { userPosts } = state;
-    return { userPosts: userPosts };
+    const { userPosts , error } = state;
+    return { userPosts: userPosts , error: error };
 }
 
 export default connect(mapStateToProps, {

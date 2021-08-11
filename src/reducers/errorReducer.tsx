@@ -1,6 +1,9 @@
-import { Terror } from '../types';
+import {
+  storeState,
+  Terror,
+} from '../types';
 
-const userReducer = (state={}, action : Terror ) => {
+const userReducer = (state:storeState, action : Terror ) => {
     
     switch(action.type){
         case 'FETCH_USER_ERROR':

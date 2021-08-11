@@ -8,6 +8,7 @@ import {
   clearPosts,
   fetchPosts,
 } from '../../actions';
+import NotFound from '../../errors/NotFound/NotFound';
 import {
   post,
   storeState,
@@ -22,8 +23,10 @@ type MyProps = {
     fetchPosts: () => void;
     clearPosts: () => void;
     posts: post[];
-    userPosts: post[];
-
+    err: {
+        err : boolean,
+        errMessage : string;
+    }
 }
 
 class NewsFeed extends React.Component<MyProps, MyState>{
@@ -37,9 +40,11 @@ class NewsFeed extends React.Component<MyProps, MyState>{
     }
 
     render() {
-        const {posts} = this.props;
-        
+        const {posts,err} = this.props;
+
         return (
+            err.err ? 
+            <NotFound errorMessage={err.errMessage}/> :
             <div className="newsfeed">
                 <InfiniteScroll
                     dataLength={posts.length}
@@ -65,7 +70,7 @@ class NewsFeed extends React.Component<MyProps, MyState>{
 }
 
 const mapStateToProps = (state: storeState) => {
-    return { posts: state.posts, userPosts: state.userPosts };
+    return { posts: state.posts , err: state.error};
 }
 
 export default connect(mapStateToProps, {

@@ -26,7 +26,10 @@ type propTypes = {
     clearUser: () => void,
     fetchUser: (username: string) => void,
     user: user,
-    error: boolean,
+    error: {
+        err : boolean,
+        errMessage : string;
+    },
 }
 
 
@@ -43,9 +46,9 @@ const ProfileSection = ({ clearUser, fetchUser, user, error }: propTypes) => {
 
     const userIsEmpty = Object.keys(user).length === 0 && user.constructor === Object;
 
-    if (error) {
+    if (error.err) {
         return (
-            <NotFound />
+            <NotFound errorMessage={error.errMessage} />
         )
     }
 

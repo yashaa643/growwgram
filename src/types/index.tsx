@@ -44,7 +44,10 @@ export type post = {
 
 export type Terror = {
     type:string,
-    payload: boolean
+    payload: {
+        err : boolean,
+        errMessage : string;
+    }
 }
 
 
@@ -61,5 +64,8 @@ export type storeState = {
     posts: post[];
     user: user;
     userPosts: post[];
-    error: boolean;
+    error: {
+        err : boolean,
+        errMessage : string;
+    };
 }
