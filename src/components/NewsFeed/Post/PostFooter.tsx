@@ -32,7 +32,7 @@ const PostFooter = ({created_at,description,username,likes,liked_by_user}:MyProp
             <div className="post-details">
                 <div className="bold-text"> {likesCount} likes</div>
                 <p className="regular-text">
-                    <span style={{fontFamily:"Montserrat",fontSize:"1em"}} className="bold-text" onClick = {() => {history.push("/users/"+ username + "/grid/")}}>{username}</span>
+                    <span style={{fontFamily:"Montserrat",fontSize:"1em"}} className="bold-text" onClick = {() => {history.push("/"+ username)}}>{username}</span>
                     &nbsp;{description}
                 </p>
                 <p className="light-text">{timePostedAgo(created_at)}</p>

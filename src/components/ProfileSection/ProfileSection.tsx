@@ -4,10 +4,7 @@ import React, { useEffect } from 'react';
 
 import Loader from 'react-loader-spinner';
 import { connect } from 'react-redux';
-import {
-  useHistory,
-  useParams,
-} from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 
 import {
   clearUser,
@@ -38,7 +35,6 @@ const ProfileSection = ({ clearUser, fetchUser, user, error }: propTypes) => {
     const { total_photos } = user;
 
     useEffect(() => {
-        console.log("Inside UseEffect")
         fetchUser(username);
         return (() => {
             clearUser();
@@ -46,10 +42,6 @@ const ProfileSection = ({ clearUser, fetchUser, user, error }: propTypes) => {
     },[clearUser,fetchUser,username])
 
     const userIsEmpty = Object.keys(user).length === 0 && user.constructor === Object;
-
-    const history = useHistory();
-
-    console.log(error);
 
     if (error) {
         return (
@@ -72,7 +64,7 @@ const ProfileSection = ({ clearUser, fetchUser, user, error }: propTypes) => {
         else return(
             <>
                 <UserDetails user={user}></UserDetails>
-                <UserPosts history={history} username={username} pages={Math.ceil(total_photos / 9)} />
+                <UserPosts username={username} pages={Math.ceil(total_photos / 9)} />
             </>
         )
 

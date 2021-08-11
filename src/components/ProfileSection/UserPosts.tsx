@@ -25,7 +25,6 @@ type propTypes = {
     clearUserPosts: () => void;
     username: string;
     pages: number;
-    history: any;
 }
 
 class UserPosts extends React.Component<propTypes>{
@@ -33,40 +32,53 @@ class UserPosts extends React.Component<propTypes>{
     state = {
         page: 1,
         username: this.props.username,
-    }
-    
-    componentDidMount(){
-        const {page,username} = this.state;
-        this.props.fetchAUserPosts(username,page);
-        this.setState({page: page + 1});
+        isGrid: true,
     }
 
-    componentWillUnmount(){
+    componentDidMount() {
+        const { page, username } = this.state;
+        this.props.fetchAUserPosts(username, page);
+        this.setState({ page: page + 1 });
+    }
+
+    componentWillUnmount() {
         this.props.clearUserPosts();
     }
 
-    fetchMorePosts = () => {
-        const {username} = this.props;
-        const {page} = this.state;
-        this.props.fetchAUserPosts(username,page)
-        this.setState({page: page + 1});
+    showGridView() {
+        this.setState({
+            isGrid : true,
+        })
     }
 
-    render(){
+    showPostView() {
+        this.setState({
+            isGrid : false,
+        })
+    }
 
-        const {userPosts,pages,username,history} = this.props;
-        const {page} = this.state;
+    fetchMorePosts = () => {
+        const { username } = this.props;
+        const { page } = this.state;
+        this.props.fetchAUserPosts(username, page)
+        this.setState({ page: page + 1 });
+    }
+
+    render() {
+
+        const { userPosts, pages, username } = this.props;
+        const { page ,isGrid} = this.state;
         return (
-            <>  
+            <>
                 <div className="up56Nav">
-                    <button className="up56NavBtn" onClick={() => {history.push("/users/"+ username+'/grid')}}>
-                    <span className="material-icons">apps</span>
-                    Grid</button>
-                    <button className="up56NavBtn" onClick={() => {history.push("/users/"+ username + "/feed")}}>
-                    <span className="material-icons">pages</span>NewsFeed</button>
+                    <button className="up56NavBtn" onClick={() => {this.showGridView()}}>
+                        <span className="material-icons">apps</span>
+                        Grid</button>
+                    <button className="up56NavBtn" onClick={() => {this.showPostView() }}>
+                        <span className="material-icons">pages</span>Post</button>
                 </div>
-                
-                 <InfiniteScroll
+
+                <InfiniteScroll
                     dataLength={userPosts.length}
                     next={this.fetchMorePosts}
                     hasMore={page <= pages}
@@ -76,33 +88,30 @@ class UserPosts extends React.Component<propTypes>{
                         height={50}
                         width={50}
                         timeout={3000} //3 secs
-                      />}
-                > 
-                
-                <Switch>
-                    <Route exact path={"/users/"+ username + "/grid"}>
-                    <GridView userPosts={userPosts}></GridView>
-                  </Route>
-                  <Route path={"/users/"+ username + "/feed"}>
-                  <div className="up56PostViewContainer">
-                  {userPosts.map((post) => {
-                            return (
-                                <Post key={post.id} post={post}></Post>
-                            )
-                        })}
-                    </div>
-                  </Route>
-                  <Route path={"/users/"+ username + "*"}>
-                        Please Select Grid or NewsFeed
-                  </Route>
-                </Switch>
-                
+                    />}
+                >
+
+                    <Switch>
+                        <Route exact path={"/" + username}>
+                            {isGrid ?
+                                <GridView userPosts={userPosts}></GridView> :
+
+                                <div className="up56PostViewContainer">
+                                    {userPosts.map((post) => {
+                                        return (
+                                            <Post key={post.id} post={post}></Post>
+                                        )
+                                    })}
+                                </div>}
+                        </Route>
+                    </Switch>
+
                 </InfiniteScroll >
-                </>
-            
+            </>
+
         )
     }
-   
+
 }
 
 const mapStateToProps = (state: storeState) => {
