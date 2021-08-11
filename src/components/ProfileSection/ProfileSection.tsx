@@ -45,7 +45,7 @@ const ProfileSection = ({ clearUser, clearUserPosts, fetchUser, user, error }: p
             clearUser();
             clearUserPosts();
         })
-    },[clearUser,fetchUser,username])
+    },[clearUserPosts,clearUser,fetchUser,username])
 
     const userIsEmpty = Object.keys(user).length === 0 && user.constructor === Object;
 
