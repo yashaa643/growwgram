@@ -16,6 +16,7 @@ const SearchComponent = () => {
     const [searchUserList, setSearchUserList] = useState<user[]>([]);
     const [searchTerm, setSearchTerm] = useState("");
     const [debouncedTerm, setDebouncedTerm] = useState("");
+    const popover = document.getElementById("sc94Popover")!;
 
     const history = useHistory();
 
@@ -23,7 +24,6 @@ const SearchComponent = () => {
         const timerId = setTimeout(() => {
             setDebouncedTerm(searchTerm);
         },1000)
-
         return () => {
             clearTimeout(timerId);
         }
@@ -36,45 +36,26 @@ const SearchComponent = () => {
                 query : debouncedTerm,
             }
         })
-        console.log("fetched api");
         setSearchUserList(response.data.results); 
         }
-
-        if(debouncedTerm){
-            search();
-        }  
-        
-        return(
-            setSearchUserList([])
-        )
+        (debouncedTerm) ? search() : setSearchUserList([])
 
     }, [debouncedTerm])
 
-    const displayPopOver = () => {
-        document.getElementById("sc94Popover")!.style.visibility = "visible";
-        document.getElementById("sc94Popover")!.style.position = "relative";
-    }
-
-    const hidePopOver = () => {
-        document.getElementById("sc94Popover")!.style.visibility = "hidden";
-        document.getElementById("sc94Popover")!.style.position = "absolute";
-    }
+    const displayPopOver = () => { popover.style.visibility = "visible"; popover.style.position = "relative"; }
+    const hidePopOver = () => { popover.style.visibility = "hidden"; popover.style.position = "absolute"; }
 
     const openUser = (username:string) => {
         history.push("/"+username);
         setSearchTerm("");
-        hidePopOver();
     }
 
     const setPopoverStatus = (term:string) =>{
         setSearchTerm(term);
-        (term === "") ? 
-        hidePopOver() :
-        displayPopOver()
+        (term === "") ? hidePopOver() : displayPopOver()
     }
 
-
-    return (
+      return (
         <div className="sc94Container">
             <input
             value = {searchTerm}
@@ -83,12 +64,10 @@ const SearchComponent = () => {
             type="text"
             placeholder={"Search"} />
             <div id="sc94Popover">
-                {
-                    (!searchTerm)
-                }
-                {
-                    (searchTerm) && (searchUserList.length === 0) && <div style={{marginLeft: "50%"}}><Loader type="ThreeDots" color="gray" height={20} width={20}/></div> 
-                }
+                {(!searchTerm) }
+
+                {(searchTerm) && (searchUserList.length === 0) && <div style={{marginLeft: "50%"}}><Loader type="ThreeDots" color="gray" height={20} width={20}/></div>}
+               
                 {searchUserList.length > 0 &&
                 <div id="sc94PopoverContent">
                     {searchUserList.map(({id,username,instagram_username,profile_image,first_name,last_name}) => {
