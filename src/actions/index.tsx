@@ -8,6 +8,8 @@ import {
 } from '../types';
 
 export const fetchPosts = () => async (dispatch: Dispatch<TfetchPosts | Terror> ) => {
+    clearUser();
+    clearUserPosts();
     const response = await unsplash.get('/photos/random', {
         params: {
             count: 10
@@ -92,7 +94,10 @@ export const fetchAUserPosts = (username: string, page: number) => async (dispat
     });;
 
     if(response)
-        dispatch({ type: 'FETCH_USER_POSTS', payload: response.data });
+        ((page === 1) ?
+            dispatch({ type: 'FETCH_USER_POSTS_FIRST', payload: response.data }) :
+            dispatch({ type: 'FETCH_USER_POSTS', payload: response.data }))
+
 }
 
 export const clearPosts = () => (dispatch: Dispatch<TfetchPosts>) => {

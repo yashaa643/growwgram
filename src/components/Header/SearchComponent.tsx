@@ -66,7 +66,7 @@ const SearchComponent = () => {
             placeholder={"Search"} />
             <div id="sc94Popover">
                 {(!searchTerm)}
-                {(searchTerm) && (searchUserList.length === 0) && <div style={{marginLeft: "50%"}}><Loader type="ThreeDots" color="gray" height={20} width={20}/></div>}    
+                {(searchTerm) && (searchUserList.length === 0) && <div style={{marginLeft: "45%"}}><Loader type="ThreeDots" color="gray" height={20} width={20}/></div>}    
                 {searchUserList.length > 0 && <Popover searchUserList={searchUserList} openUser={openUser}></Popover> }
             </div>   
         </div>

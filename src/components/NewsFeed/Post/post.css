@@ -7,13 +7,17 @@
 }
 
 .post-container{
-    margin-bottom: 24px;
+    margin-top: 24px;
+    box-sizing: border-box;
+    width: 100vw;
 }
 .post{
+    display: flex;
+    flex-direction: column;
     border: 1px solid var(--border-color);
     border-radius: 2px;
     background-color: white;
-    width: 400px;
+    max-width: 400px;
     margin: auto;
 }
 .post-header{

@@ -5,7 +5,18 @@
     --follow-color: #0095f6;
 }
 
+.ps21MobilesOnly{
+    display: none !important ;
+}
+
+.ps21LargeScreensOnly{
+    display: flex !important ;
+    justify-content: center;
+}
+
+
 .ps27UserHeader{
+    margin: auto;
     max-width: 935px;
     display: flex;
     justify-content: space-evenly;
@@ -80,9 +91,9 @@
     margin-bottom: 10px;
     display: flex;
     flex-wrap: nowrap;
-    justify-content: flex-start;
+    justify-content: center;
     padding-left: 0px;
-    align-items: flex-start;
+    align-items: center;
     margin-top: 0;
 }
 
@@ -143,9 +154,9 @@
     opacity: 1;
 }
 
-.up56Nav{
+.up56Nav {
     margin-top: 44px;
-    width: 935px;
+    width: 100%;
     height: 52px;
     display: flex;
     flex-direction: row;
@@ -187,4 +198,104 @@
         justify-content: space-evenly;
         flex-wrap: wrap;
     }
+}
+
+@media only screen and (max-width: 668px){
+
+    .main {
+        margin-top: 54px;
+    }
+
+    h5 {
+        margin-top: 0;
+        margin-bottom: 0;
+    }
+
+    element.style {
+        width: 100%;
+    }
+
+   .ps21MobilesOnly{
+        display: flex !important ;
+        justify-content: center;
+    }
+
+    .ps21LargeScreensOnly{
+        display: none !important ;
+    }
+
+    .ps27UserHeader{
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        padding: 0 12px;
+    }
+    
+    .ps27UserProfileIcon{
+        height: 80px;
+        width: 80px;
+    }
+
+    .ps27ImgContainer {
+        padding: 0;
+        width: auto;
+        margin-right: 24px;
+    }
+    
+    .username-text{
+        font-size: 1.6rem;
+    }
+    
+    .ps27UserDetails{
+        display: flex;
+        flex-direction: column;   
+    }
+    
+    .ud23FirstRow{
+        display: flex;
+        align-items: flex-start;
+        justify-content: flex-start;
+        margin-bottom: 10px;
+        margin-top: 10px;
+    }
+
+    .ud23UsernameColumn{
+        margin-top: 0;
+        display: flex;
+        flex-direction: column;
+    }
+    
+    .ud23ButtonRow{
+        display: flex;
+        margin-left: 0px;
+    }
+    
+    
+    .ud23FollowButton{
+        margin-left: 0;
+    }
+
+    .ud23CountRow{
+        margin-top: 24px;
+        border-top: 1px solid var(--border-color);
+        border-bottom: 1px solid var(--border-color);
+        justify-content: space-evenly;
+    }
+    
+    .ud23CountRow div{
+        padding: 12px 0;
+        width: 20vw;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .up56PostViewContainer {
+        display: flex;
+        flex-direction: column;
+        margin-top: 0;  
+        align-items: center;
+    }
+
 }

@@ -193,7 +193,7 @@ textarea {
 /*! Start Type Nugget Styles */
 
 body {
-    font-family: 'Lora';
+    font-family: 'Montserrat';
     font-size: 15px;
     color: #333;
     background-color: #FFF;
@@ -254,7 +254,7 @@ h6 {
 p {
     margin-top: 1em;
     margin-bottom: 1.5em;
-    font-family: 'Lora';
+    font-family: 'Montserrat';
 }
 
 strong {
@@ -267,7 +267,7 @@ em {
 
 a {
     color: #790cf4;
-    font-family: 'Lora';
+    font-family: 'Montserrat';
 }
 
 ul, ol {

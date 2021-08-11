@@ -8,6 +8,7 @@ import { useParams } from 'react-router-dom';
 
 import {
   clearUser,
+  clearUserPosts,
   fetchUser,
 } from '../../actions';
 import NotFound from '../../errors/NotFound/NotFound';
@@ -24,6 +25,7 @@ type paramTypes = {
 
 type propTypes = {
     clearUser: () => void,
+    clearUserPosts: () => void
     fetchUser: (username: string) => void,
     user: user,
     error: {
@@ -33,7 +35,7 @@ type propTypes = {
 }
 
 
-const ProfileSection = ({ clearUser, fetchUser, user, error }: propTypes) => {
+const ProfileSection = ({ clearUser, clearUserPosts, fetchUser, user, error }: propTypes) => {
     const { username } = useParams<paramTypes>();
     const { total_photos } = user;
 
@@ -41,6 +43,7 @@ const ProfileSection = ({ clearUser, fetchUser, user, error }: propTypes) => {
         fetchUser(username);
         return (() => {
             clearUser();
+            clearUserPosts();
         })
     },[clearUser,fetchUser,username])
 
@@ -65,10 +68,10 @@ const ProfileSection = ({ clearUser, fetchUser, user, error }: propTypes) => {
             ) 
         }
         else return(
-            <>
+            <div style={{width:"100%"}}>
                 <UserDetails user={user}></UserDetails>
                 <UserPosts username={username} pages={Math.ceil(total_photos / 9)} />
-            </>
+            </div>
         )
 
 }
@@ -81,7 +84,8 @@ const mapStateToProps = (state: storeState) => {
 
 export default connect(mapStateToProps, {
     fetchUser,
-    clearUser
+    clearUser,
+    clearUserPosts
 })(ProfileSection);
 
 

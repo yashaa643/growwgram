@@ -7,27 +7,28 @@ import PostFooter from './PostFooter';
 import PostHeader from './PostHeader';
 
 type MyProps = {
-    post : post
+    post: post
 }
 
-const Post = ({post}:MyProps) => {
-    const {created_at, liked_by_user,likes, urls, description, alt_description , user} = post;
-    return(
+const Post = ({ post }: MyProps) => {
+    const { created_at, liked_by_user, likes, urls, description, alt_description, user } = post;
+    return (
         <div className="post-container">
             <div className="post">
-            <div className="post-header"> <PostHeader user={post.user}/></div>
-            <img src={urls.small} alt={!description ? alt_description : description} />
-            <PostFooter 
-                description={!description ? alt_description : description}
-                username={user.username}
-                likes = {likes}
-                liked_by_user = {liked_by_user}
-                created_at = {created_at}
-            />
+                <div className="post-header"> <PostHeader user={post.user} /></div>
+                <img src={urls.small}
+                 alt={!description ? alt_description : description} />
+                <PostFooter
+                    description={!description ? alt_description : description}
+                    username={user.username}
+                    likes={likes}
+                    liked_by_user={liked_by_user}
+                    created_at={created_at}
+                />
+            </div>
         </div>
-        </div>  
     )
-    
+
 }
 
 export default Post

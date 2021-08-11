@@ -62,7 +62,7 @@ class UserPosts extends React.Component<propTypes>{
         const { page ,isGrid} = this.state;
         return (
             <>
-                <div className="up56Nav">
+                <div className="up56Nav ps21LargeScreensOnly">
                     <button className="up56NavBtn" onClick={() => {this.showGridView()}}>
                         <span className="material-icons">apps</span>
                         Grid</button>
@@ -87,16 +87,24 @@ class UserPosts extends React.Component<propTypes>{
 
                     <Switch>
                         <Route exact path={"/" + username}>
-                            {isGrid ?
-                                <GridView userPosts={userPosts}></GridView> :
-
+                            <div className="ps21LargeScreensOnly">
+                              {isGrid ? <GridView userPosts={userPosts}></GridView> :
                                 <div className="up56PostViewContainer">
                                     {userPosts.map((post) => {
                                         return (
                                             <Post key={post.id} post={post}></Post>
                                         )
                                     })}
-                                </div>}
+                                </div>}  
+                            </div>
+                            <div className="ps21MobilesOnly up56PostViewContainer">
+                                    {userPosts.map((post) => {
+                                        return (
+                                            <Post key={post.id} post={post}></Post>
+                                        )
+                                    })}
+                            </div>
+                            ]
                         </Route>
                     </Switch>
 
