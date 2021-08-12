@@ -46,7 +46,7 @@ class NewsFeed extends React.Component<MyProps, MyState>{
             },
             visible : {
                 x: '0',
-                transition : {ease: 'easeInOut'}
+                transition : {delay: 0.8 ,ease: 'easeInOut',duration: 0.4}
             },
             exit : {
                 x: '-100vw',
