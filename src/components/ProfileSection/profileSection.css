@@ -171,7 +171,8 @@
     z-index: -10;
 }
 
-.up56Nav button{
+.up56NavBtn{
+    cursor: pointer;
     display: flex;
     height: inherit;
     color: var(--light-text);
@@ -181,14 +182,11 @@
     align-items: center;
 }
 
-.up56NavBtn:focus{
+.up56NavBtn:focus , .up56NavBtn:hover , .up56NavBtn.active{
     color: black;
     border-top: 1px solid black;
 }
-.up56NavBtn:hover{
-    color: black;
-    border-top: 1px solid black;
-}
+
 
 .up56PostViewContainer{
     margin-top: 36px;

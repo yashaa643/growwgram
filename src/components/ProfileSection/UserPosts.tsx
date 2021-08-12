@@ -1,7 +1,6 @@
 import React from 'react';
 
 import InfiniteScroll from 'react-infinite-scroll-component';
-import Loader from 'react-loader-spinner';
 import { connect } from 'react-redux';
 
 import NotFound from '../../errors/NotFound/NotFound';
@@ -13,6 +12,7 @@ import {
   post,
   storeState,
 } from '../../types';
+import LoaderComponent from '../Loader';
 import Post from '../Post/Post';
 import GridView from './GridView';
 
@@ -59,10 +59,10 @@ class UserPosts extends React.Component<propTypes>{
         return (
             <>
                 <div className="up56Nav ps21LargeScreensOnly">
-                    <button className="up56NavBtn" onClick={() => { this.showGridView() }}>
-                        <span className="material-icons">apps</span>Grid</button>
-                    <button className="up56NavBtn" onClick={() => { this.showPostView() }}>
-                        <span className="material-icons">pages</span>Post</button>
+                    <div className={`up56NavBtn ${isGrid ? 'active' : ''}`} onClick={() => { this.showGridView()}}>
+                        <span className="material-icons">apps</span>Grid</div>
+                    <div className={`up56NavBtn ${!isGrid ? 'active' : ''}`} onClick={() => { this.showPostView() }}>
+                        <span className="material-icons">pages</span>Post</div>
                 </div>
 
                 {(error.err) ?
@@ -71,15 +71,8 @@ class UserPosts extends React.Component<propTypes>{
                         dataLength={userPosts.length}
                         next={this.fetchMorePosts}
                         hasMore={page <= pages}
-                        loader={<Loader
-                            type="ThreeDots"
-                            color="#BBBBBB"
-                            height={50}
-                            width={50}
-                            timeout={3000} //3 secs
-                        />}
+                        loader={<LoaderComponent/>}
                     >
-
                                 <div className="ps21LargeScreensOnly">
                                     {isGrid ? <GridView userPosts={userPosts}></GridView> :
                                         <div className="up56PostViewContainer">
@@ -97,7 +90,6 @@ class UserPosts extends React.Component<propTypes>{
                                         )
                                     })}
                                 </div>
-
                     </InfiniteScroll >}
             </>
         )

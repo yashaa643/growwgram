@@ -39,6 +39,7 @@ type propTypes = {
 const ProfileSection = ({ clearUser, clearUserPosts, fetchUser, user, error }: propTypes) => {
     const { username } = useParams<paramTypes>();
     const { total_photos } = user;
+    
     const variants = {
         hidden : {
             x: '100vw'
@@ -52,6 +53,7 @@ const ProfileSection = ({ clearUser, clearUserPosts, fetchUser, user, error }: p
             transition: {ease: 'easeInOut'}
         }
     }
+
     useEffect(() => {
         fetchUser(username);
         return (() => {

@@ -2,11 +2,11 @@ import './NotFound.css';
 
 import React from 'react';
 
-import unAuthorizedPng from '../../images/PNG/03.png';
-import badURLPng from '../../images/PNG/05.png';
-import notFoundPng from '../../images/PNG/09.png';
-import apiErrorPng from '../../images/PNG/10.png';
-import networkErrorPng from '../../images/PNG/11.png';
+import unAuthorizedPng from '../../images/03.png';
+import badURLPng from '../../images/05.png';
+import notFoundPng from '../../images/09.png';
+import apiErrorPng from '../../images/10.png';
+import networkErrorPng from '../../images/11.png';
 
 type MyProps = {
     errorMessage: string;

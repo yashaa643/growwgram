@@ -2,7 +2,6 @@ import React from 'react';
 
 import { motion } from 'framer-motion';
 import InfiniteScroll from 'react-infinite-scroll-component';
-import Loader from 'react-loader-spinner';
 import { connect } from 'react-redux';
 
 import NotFound from '../../errors/NotFound/NotFound';
@@ -14,6 +13,7 @@ import {
   post,
   storeState,
 } from '../../types';
+import LoaderComponent from '../Loader';
 import Post from '../Post';
 
 type MyState = {
@@ -54,10 +54,12 @@ class NewsFeed extends React.Component<MyProps, MyState>{
     }
     render() {
         const {posts,err} = this.props;
+
+        if(err.err){
+            return <NotFound errorMessage={err.errMessage}/> 
+        }
    
         return (
-            err.err ? 
-            <NotFound errorMessage={err.errMessage}/> :
             <motion.div 
             className="nf16Container"
             variants={variants}
@@ -69,13 +71,7 @@ class NewsFeed extends React.Component<MyProps, MyState>{
                     dataLength={posts.length}
                     next={this.props.fetchPosts}
                     hasMore={true}
-                    loader={<Loader
-                        type="ThreeDots"
-                        color="#BBBBBB"
-                        height={50}
-                        width={50}
-                        timeout={3000} //3 secs
-                      />}
+                    loader={<LoaderComponent />}
                 >
                         {posts.map((post) => {
                             return (

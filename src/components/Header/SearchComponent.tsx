@@ -2,6 +2,7 @@ import './header.css';
 
 import React, {
   useEffect,
+  useRef,
   useState,
 } from 'react';
 
@@ -17,8 +18,8 @@ const SearchComponent = () => {
     const [searchUserList, setSearchUserList] = useState<user[]>([]);
     const [searchTerm, setSearchTerm] = useState("");
     const [debouncedTerm, setDebouncedTerm] = useState("");
-    const popover = document.getElementById("sc94Popover")!;
-
+    const popOverEl = useRef<HTMLDivElement>(null);
+    const popover = popOverEl.current!
     const history = useHistory();
 
     useEffect(() => {
@@ -59,9 +60,11 @@ const SearchComponent = () => {
                 onBlur={() => setPopoverStatus("")}
                 type="text"
                 placeholder="Search"/>
-            <div id="sc94Popover">
-                {(!searchTerm)}
-                {(searchTerm) && (searchUserList.length === 0) && <div style={{ marginLeft: "45%" }}><Loader type="ThreeDots" color="gray" height={20} width={20} /></div>}
+            <div id="sc94Popover" ref={popOverEl}>
+                {(searchTerm) && (searchUserList.length === 0) && 
+                    <div style={{ marginLeft: "45%" }}>
+                        <Loader type="ThreeDots" color="gray" height={20} width={20} /> 
+                    </div>}
                 {searchUserList.length > 0 && <Popover searchUserList={searchUserList} openUser={openUser}></Popover>}
             </div>
         </div>
