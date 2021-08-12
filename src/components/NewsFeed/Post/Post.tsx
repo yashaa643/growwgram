@@ -13,9 +13,9 @@ type MyProps = {
 const Post = ({ post }: MyProps) => {
     const { created_at, liked_by_user, likes, urls, description, alt_description, user } = post;
     return (
-        <div className="post-container">
-            <div className="post">
-                <div className="post-header"> <PostHeader user={post.user} /></div>
+        <div className="pt63PostContainer">
+            <div className="pt63Post">
+                <div className="pt63PostHeader"> <PostHeader user={post.user} /></div>
                 <img src={urls.small}
                  alt={!description ? alt_description : description} />
                 <PostFooter

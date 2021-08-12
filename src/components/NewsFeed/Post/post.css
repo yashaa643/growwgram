@@ -6,12 +6,12 @@
     --liked-color: #ed4956;
 }
 
-.post-container{
+.pt63PostContainer{
     margin-top: 24px;
     box-sizing: border-box;
     width: 100vw;
 }
-.post{
+.pt63Post{
     display: flex;
     flex-direction: column;
     border: 1px solid var(--border-color);
@@ -20,7 +20,7 @@
     max-width: 400px;
     margin: auto;
 }
-.post-header{
+.pt63PostHeader{
     box-sizing: border-box;
     display: flex;
     flex-direction: row;
@@ -33,24 +33,24 @@
     border-bottom-right-radius: 0px;
 }
 
-.post-footer{
+.pt63PostFooter{
     box-sizing: border-box;
 }
 
-.header-icon{
+.pt63HeaderIcon{
     border: 1px solid var(--border-color);
     border-radius: 50%;
     height: 42px;
     width: 42px;
 }
 
-.header-user{
+.pt63HeaderUser{
     margin-left: 10px;
     text-decoration: none;
     color: inherit;
 }
 
-.header-user:hover{
+.pt63HeaderUser:hover{
     text-decoration: underline;
     cursor: pointer;
 }
@@ -78,7 +78,7 @@ a:hover{
     text-decoration: underline;
 }
 
-.like-section{
+.pt63LikeSection{
     display: flex;
     justify-content: flex-start;
     padding: 0 4px;
@@ -88,22 +88,18 @@ a:hover{
     margin-left: auto;
 }
 
-.icon-btn{
+.pt63IconButton{
     width: 40px;
     height: 40px;
     background: none;
     border: none;
 }
 
-.icon-btn.animated{
-    animation: zoom-in-zoom-out 0.5s ease;
-}
-
-.icon-btn:hover{
+.pt63IconButton:hover{
     cursor: pointer;
 }
 
-.post-details{
+.pt63PostDetails{
    padding: 0 16px;
    max-width: 100%; 
 }

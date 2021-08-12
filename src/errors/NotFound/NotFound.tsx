@@ -18,7 +18,7 @@ const NotFound = ({ errorMessage }: MyProps) => {
         return (
             <div className="nf13Div">
                 <h3><a href="/">{errorMessage} Click Here To Try Again</a></h3>
-                <img className="nf13Img" src={networkErrorPng} alt="404"></img>
+                <img className="nf13Img" src={networkErrorPng} alt="Network Error"></img>
             </div>
         )
     } else if (errorMessage === "401") {
@@ -32,21 +32,21 @@ const NotFound = ({ errorMessage }: MyProps) => {
         return (
             <div className="nf13Div">
                 <h3><a href="/">UH OH!! Looks Like You are Lost</a></h3>
-                <img className="nf13Img" src={badURLPng} alt="401"></img>
+                <img className="nf13Img" src={badURLPng} alt="BAD URL"></img>
             </div>
         )
     }else if (errorMessage === "404") {
         return (
             <div className="nf13Div">
                 <h3><a href="/">Sorry We Did Not Find Anything</a></h3>
-                <img className="nf13Img" src={notFoundPng} alt="401"></img>
+                <img className="nf13Img" src={notFoundPng} alt="404"></img>
             </div>
         )
     }else if (errorMessage === "403"){
         return (
             <div className="nf13Div">
                 <h3><a href="/">Brrrr the Source has been exhausted please wait while we look into it</a></h3>
-                <img className="nf13Img" src={apiErrorPng} alt="401"></img>
+                <img className="nf13Img" src={apiErrorPng} alt="403"></img>
             </div>
         )
     }
@@ -54,7 +54,7 @@ const NotFound = ({ errorMessage }: MyProps) => {
         return (
             <div className="nf13Div">
                 <h3><a href="/">Click Here to go back</a></h3>
-                <img className="nf13Img" src={networkErrorPng} alt="401"></img>
+                <img className="nf13Img" src={networkErrorPng} alt="Error"></img>
             </div>
         )
     }

@@ -34,18 +34,15 @@ class NewsFeed extends React.Component<MyProps, MyState>{
     componentDidMount() {
         this.props.fetchPosts();
     }
-
     componentWillUnmount(){
         this.props.clearPosts();
     }
-
     render() {
         const {posts,err} = this.props;
-
         return (
             err.err ? 
             <NotFound errorMessage={err.errMessage}/> :
-            <div className="newsfeed">
+            <div className="nf16Container">
                 <InfiniteScroll
                     dataLength={posts.length}
                     next={this.props.fetchPosts}
