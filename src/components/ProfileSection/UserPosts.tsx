@@ -63,9 +63,8 @@ class UserPosts extends React.Component<propTypes>{
         return (
             <>
                 <div className="up56Nav ps21LargeScreensOnly">
-                    <button className="up56NavBtn" autoFocus onClick={() => { this.showGridView() }}>
-                        <span className="material-icons">apps</span>
-                        Grid</button>
+                    <button className="up56NavBtn" onClick={() => { this.showGridView() }}>
+                        <span className="material-icons">apps</span>Grid</button>
                     <button className="up56NavBtn" onClick={() => { this.showPostView() }}>
                         <span className="material-icons">pages</span>Post</button>
                 </div>

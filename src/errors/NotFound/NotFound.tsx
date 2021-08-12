@@ -5,6 +5,7 @@ import React from 'react';
 import unAuthorizedPng from '../../images/PNG/03.png';
 import badURLPng from '../../images/PNG/05.png';
 import notFoundPng from '../../images/PNG/09.png';
+import apiErrorPng from '../../images/PNG/10.png';
 import networkErrorPng from '../../images/PNG/11.png';
 
 type MyProps = {
@@ -39,6 +40,13 @@ const NotFound = ({ errorMessage }: MyProps) => {
             <div className="nf13Div">
                 <h3><a href="/">Sorry We Did Not Find Anything</a></h3>
                 <img className="nf13Img" src={notFoundPng} alt="401"></img>
+            </div>
+        )
+    }else if (errorMessage === "403"){
+        return (
+            <div className="nf13Div">
+                <h3><a href="/">Brrrr the Source has been exhausted please wait while we look into it</a></h3>
+                <img className="nf13Img" src={apiErrorPng} alt="401"></img>
             </div>
         )
     }

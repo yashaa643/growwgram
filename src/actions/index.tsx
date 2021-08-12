@@ -8,26 +8,26 @@ import {
 } from '../types';
 
 function _setWithExpiry(key: string, value: any, ttl: number) {
-    const now = new Date()
+    const now = new Date();
     const item = {
         value: value,
         expiry: now.getTime() + ttl,
     }
-    localStorage.setItem(key, JSON.stringify(item))
+    localStorage.setItem(key, JSON.stringify(item));
 }
 
 function _getWithExpiry(key: string) {
-    const itemStr = localStorage.getItem(key)
+    const itemStr = localStorage.getItem(key);
     if (!itemStr) {
         return null
-    }
-    const item = JSON.parse(itemStr)
+    };
+    const item = JSON.parse(itemStr);
     const now = new Date()
     if (now.getTime() > item.expiry) {
         localStorage.removeItem(key)
-        return null
+        return null;
     }
-    return item.value
+    return item.value;
 }
 
 function _dispatchError(error:any,dispatch: Dispatch<TfetchPosts | TfetchUser | Terror>){
@@ -37,6 +37,9 @@ function _dispatchError(error:any,dispatch: Dispatch<TfetchPosts | TfetchUser | 
         }                     
         else if (error.response.status === 404) {
             dispatch({ type: 'FETCH_USER_ERROR', payload: { err: true, errMessage: "404" } })
+        }
+        else if (error.response.statues === 403) {
+            dispatch({ type: 'FETCH_USER_ERROR', payload: { err: true, errMessage: "403" } })
         }
     } else if (error.request) {                 //request was made but no response received
         dispatch({ type: 'FETCH_USER_ERROR', payload: { err: true, errMessage: error.message } })
