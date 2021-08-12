@@ -18,7 +18,7 @@ const App = () => {
   return (
     <>
       <Router>
-        <Header />
+          <Header />
         <div className="main">
           <Switch>
             <Route exact path="/" children={<NewsFeed/>} />

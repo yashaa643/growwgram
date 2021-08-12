@@ -19,7 +19,7 @@
     margin: auto;
     max-width: 935px;
     display: flex;
-    justify-content: space-evenly;
+    justify-content: flex-start;
 
 }
 
@@ -59,6 +59,7 @@
 }
 
 .ud23ButtonRow button{
+    cursor: pointer;
     background-color: transparent;
     border: 1px solid var(--border-color);
     border-radius: 4px;
@@ -91,7 +92,7 @@
     margin-bottom: 10px;
     display: flex;
     flex-wrap: nowrap;
-    justify-content: center;
+    justify-content: flex-start;
     padding-left: 0px;
     align-items: center;
     margin-top: 0;
@@ -121,6 +122,7 @@
     flex-direction: row;
     justify-content: space-between;
     flex-wrap: wrap;
+    z-index: 10;
 }
 
 .up56ImgContainer{
@@ -135,6 +137,7 @@
     width: 293px;
     height: 293px;
     object-fit: cover;
+    z-index: 10;
 }
 
 .up56Hov{
@@ -148,6 +151,7 @@
     height: 293px;
     position: absolute;
     background-color: rgb(0,0,0,0.5);
+    z-index: 9;
 }
 
 .up56Hov:hover{
@@ -155,6 +159,7 @@
 }
 
 .up56Nav {
+    background: transparent;
     margin-top: 44px;
     width: 100%;
     height: 52px;
@@ -163,6 +168,7 @@
     justify-content: space-evenly;
     align-items: center;
     border-top: 1px solid var(--border-color);
+    z-index: -10;
 }
 
 .up56Nav button{

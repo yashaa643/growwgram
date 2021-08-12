@@ -97,6 +97,7 @@ export const fetchAUserPosts = (username: string, page: number) => async (dispat
         }).catch((error) => _dispatchError(error,dispatch));;
     
         if (response) {
+            _setWithExpiry("$"+username+"#"+page,response.data,300000);
             ((page === 1) ?
                 dispatch({ type: 'FETCH_USER_POSTS_FIRST', payload: response.data }) :
                 dispatch({ type: 'FETCH_USER_POSTS', payload: response.data }))

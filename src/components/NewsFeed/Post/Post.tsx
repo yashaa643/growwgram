@@ -2,6 +2,8 @@ import './post.css';
 
 import React from 'react';
 
+import { motion } from 'framer-motion';
+
 import { post } from '../../../types';
 import PostFooter from './PostFooter';
 import PostHeader from './PostHeader';
@@ -16,8 +18,10 @@ const Post = ({ post }: MyProps) => {
         <div className="pt63PostContainer">
             <div className="pt63Post">
                 <div className="pt63PostHeader"> <PostHeader user={post.user} /></div>
-                <img src={urls.small}
-                 alt={!description ? alt_description : description} />
+                <motion.img
+                    whileTap={{ scale: 1.5 }}
+                    src={urls.regular}
+                    alt={!description ? alt_description : description} />
                 <PostFooter
                     description={!description ? alt_description : description}
                     username={user.username}
