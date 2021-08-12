@@ -4,7 +4,7 @@ import React, { useState } from 'react';
 
 import { useHistory } from 'react-router-dom';
 
-import { timePostedAgo } from '../../../utils/utils';
+import { timePostedAgo } from '../../utils';
 import LikeSection from './LikeSection';
 
 type MyProps = {

@@ -1,13 +1,18 @@
-import { TfetchPosts } from '../types';
+import { TfetchPosts } from '../../types';
+import {
+  ClearUserPosts,
+  FetchUserPosts,
+  FetchUserPostsFirst,
+} from '../actionTypes';
 
 const userPostsReducer = (state=[], action : TfetchPosts) => {
     
     switch(action.type){
-        case 'FETCH_USER_POSTS_FIRST':
+        case FetchUserPostsFirst:
             return [...action.payload];
-        case 'FETCH_USER_POSTS':
+        case FetchUserPosts:
             return [...state,...action.payload];
-        case 'CLEAR_USER_POSTS':
+        case ClearUserPosts:
             return [];
         default:
             return state;

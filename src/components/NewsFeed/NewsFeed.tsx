@@ -5,16 +5,16 @@ import InfiniteScroll from 'react-infinite-scroll-component';
 import Loader from 'react-loader-spinner';
 import { connect } from 'react-redux';
 
+import NotFound from '../../errors/NotFound/NotFound';
 import {
   clearPosts,
   fetchPosts,
-} from '../../actions';
-import NotFound from '../../errors/NotFound/NotFound';
+} from '../../store/actions';
 import {
   post,
   storeState,
 } from '../../types';
-import Post from './Post/';
+import Post from '../Post';
 
 type MyState = {
     posts: post[];
@@ -30,6 +30,20 @@ type MyProps = {
     }
 }
 
+const variants = {
+    hidden : {
+        x: '-100vw'
+    },
+    visible : {
+        x: '0',
+        transition : {delay: 0.8 ,ease: 'easeInOut',duration: 0.4}
+    },
+    exit : {
+        x: '-100vw',
+        transition: {ease: 'easeInOut'}
+    }
+}
+
 class NewsFeed extends React.Component<MyProps, MyState>{
 
     componentDidMount() {
@@ -40,19 +54,7 @@ class NewsFeed extends React.Component<MyProps, MyState>{
     }
     render() {
         const {posts,err} = this.props;
-        const variants = {
-            hidden : {
-                x: '-100vw'
-            },
-            visible : {
-                x: '0',
-                transition : {delay: 0.8 ,ease: 'easeInOut',duration: 0.4}
-            },
-            exit : {
-                x: '-100vw',
-                transition: {ease: 'easeInOut'}
-            }
-        }
+   
         return (
             err.err ? 
             <NotFound errorMessage={err.errMessage}/> :

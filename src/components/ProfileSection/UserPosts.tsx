@@ -3,21 +3,17 @@ import React from 'react';
 import InfiniteScroll from 'react-infinite-scroll-component';
 import Loader from 'react-loader-spinner';
 import { connect } from 'react-redux';
-import {
-  Route,
-  Switch,
-} from 'react-router-dom';
 
+import NotFound from '../../errors/NotFound/NotFound';
 import {
   clearUserPosts,
   fetchAUserPosts,
-} from '../../actions';
-import NotFound from '../../errors/NotFound/NotFound';
+} from '../../store/actions';
 import {
   post,
   storeState,
 } from '../../types';
-import Post from '../NewsFeed/Post/Post';
+import Post from '../Post/Post';
 import GridView from './GridView';
 
 type propTypes = {
@@ -41,7 +37,7 @@ class UserPosts extends React.Component<propTypes>{
     }
 
     componentDidMount() {
-        const { page, username } = this.state;
+        const { page, username} = this.state;
         this.props.fetchAUserPosts(username, page);
         this.setState({ page: page + 1 });
     }
@@ -50,15 +46,15 @@ class UserPosts extends React.Component<propTypes>{
     showPostView = () => this.setState({ isGrid: false, })
 
     fetchMorePosts = () => {
-        const { username } = this.props;
+        const { username , fetchAUserPosts } = this.props;
         const { page } = this.state;
-        this.props.fetchAUserPosts(username, page)
+        fetchAUserPosts(username, page)
         this.setState({ page: page + 1 });
     }
 
     render() {
 
-        const { error, userPosts, pages, username } = this.props;
+        const { error, userPosts, pages } = this.props;
         const { page, isGrid } = this.state;
         return (
             <>
@@ -84,8 +80,6 @@ class UserPosts extends React.Component<propTypes>{
                         />}
                     >
 
-                        <Switch>
-                            <Route exact path={"/" + username}>
                                 <div className="ps21LargeScreensOnly">
                                     {isGrid ? <GridView userPosts={userPosts}></GridView> :
                                         <div className="up56PostViewContainer">
@@ -103,8 +97,6 @@ class UserPosts extends React.Component<propTypes>{
                                         )
                                     })}
                                 </div>
-                            </Route>
-                        </Switch>
 
                     </InfiniteScroll >}
             </>

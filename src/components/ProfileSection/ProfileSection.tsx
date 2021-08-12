@@ -7,12 +7,12 @@ import Loader from 'react-loader-spinner';
 import { connect } from 'react-redux';
 import { useParams } from 'react-router-dom';
 
+import NotFound from '../../errors/NotFound/NotFound';
 import {
   clearUser,
   clearUserPosts,
   fetchUser,
-} from '../../actions';
-import NotFound from '../../errors/NotFound/NotFound';
+} from '../../store/actions';
 import {
   storeState,
   user,
@@ -92,7 +92,6 @@ const ProfileSection = ({ clearUser, clearUserPosts, fetchUser, user, error }: p
                 <UserPosts username={username} pages={Math.ceil(total_photos / 9)} />
             </motion.div>
         )
-
 }
 }
 

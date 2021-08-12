@@ -4,7 +4,7 @@ import React from 'react';
 
 import { motion } from 'framer-motion';
 
-import { post } from '../../../types';
+import { post } from '../../types';
 import PostFooter from './PostFooter';
 import PostHeader from './PostHeader';
 
@@ -21,9 +21,9 @@ const Post = ({ post }: MyProps) => {
                 <motion.img
                     whileTap={{ scale: 1.5 }}
                     src={urls.regular}
-                    alt={!description ? alt_description : description} />
+                    alt={description ? description : alt_description} />
                 <PostFooter
-                    description={!description ? alt_description : description}
+                    description={description ? description : alt_description}
                     username={user.username}
                     likes={likes}
                     liked_by_user={liked_by_user}
