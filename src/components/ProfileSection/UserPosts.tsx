@@ -26,9 +26,9 @@ type propTypes = {
     clearUserPosts: () => void;
     username: string;
     pages: number;
-    error : {
-        err : boolean,
-        errMessage : string
+    error: {
+        err: boolean,
+        errMessage: string
     }
 }
 
@@ -46,8 +46,8 @@ class UserPosts extends React.Component<propTypes>{
         this.setState({ page: page + 1 });
     }
 
-    showGridView = () => this.setState({isGrid : true,})
-    showPostView = () => this.setState({isGrid : false,})
+    showGridView = () => this.setState({ isGrid: true, })
+    showPostView = () => this.setState({ isGrid: false, })
 
     fetchMorePosts = () => {
         const { username } = this.props;
@@ -59,62 +59,63 @@ class UserPosts extends React.Component<propTypes>{
     render() {
 
         const { error, userPosts, pages, username } = this.props;
-        const { page ,isGrid} = this.state;
+        const { page, isGrid } = this.state;
         return (
             <>
                 <div className="up56Nav ps21LargeScreensOnly">
-                    <button className="up56NavBtn" onClick={() => {this.showGridView()}}>
+                    <button className="up56NavBtn" onClick={() => { this.showGridView() }}>
                         <span className="material-icons">apps</span>
                         Grid</button>
-                    <button className="up56NavBtn" onClick={() => {this.showPostView() }}>
+                    <button className="up56NavBtn" onClick={() => { this.showPostView() }}>
                         <span className="material-icons">pages</span>Post</button>
                 </div>
 
-               { (error.err) ?
-                <NotFound  errorMessage = {error.errMessage}/> :
-                <InfiniteScroll
-                    dataLength={userPosts.length}
-                    next={this.fetchMorePosts}
-                    hasMore={page <= pages}
-                    loader={<Loader
-                        type="ThreeDots"
-                        color="#BBBBBB"
-                        height={50}
-                        width={50}
-                        timeout={3000} //3 secs
-                    />}
-                >
+                {(error.err) ?
+                    <NotFound errorMessage={error.errMessage} /> :
+                    <InfiniteScroll
+                        dataLength={userPosts.length}
+                        next={this.fetchMorePosts}
+                        hasMore={page <= pages}
+                        loader={<Loader
+                            type="ThreeDots"
+                            color="#BBBBBB"
+                            height={50}
+                            width={50}
+                            timeout={3000} //3 secs
+                        />}
+                    >
 
-                    <Switch>
-                        <Route exact path={"/" + username}>
-                            <div className="ps21LargeScreensOnly">
-                              {isGrid ? <GridView userPosts={userPosts}></GridView> :
-                                <div className="up56PostViewContainer">
+                        <Switch>
+                            <Route exact path={"/" + username}>
+                                <div className="ps21LargeScreensOnly">
+                                    {isGrid ? <GridView userPosts={userPosts}></GridView> :
+                                        <div className="up56PostViewContainer">
+                                            {userPosts.map((post) => {
+                                                return (
+                                                    <Post key={post.id} post={post}></Post>
+                                                )
+                                            })}
+                                        </div>}
+                                </div>
+                                <div className="ps21MobilesOnly up56PostViewContainer">
                                     {userPosts.map((post) => {
                                         return (
                                             <Post key={post.id} post={post}></Post>
                                         )
                                     })}
-                                </div>}  
-                            </div>
-                            <div className="ps21MobilesOnly up56PostViewContainer">
-                                    {userPosts.map((post) => {
-                                        return (
-                                            <Post key={post.id} post={post}></Post>
-                                        )
-                                    })}
-                            </div>
-                            ]
-                        </Route>
-                    </Switch>
+                                </div>
+                            </Route>
+                        </Switch>
 
-                </InfiniteScroll >}
+                    </InfiniteScroll >}
             </>
-        )}}
+        )
+    }
+}
 
 const mapStateToProps = (state: storeState) => {
-    const { userPosts , error } = state;
-    return { userPosts: userPosts , error: error };
+    const { userPosts, error } = state;
+    return { userPosts: userPosts, error: error };
 }
 
 export default connect(mapStateToProps, {

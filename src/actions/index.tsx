@@ -81,25 +81,29 @@ export const clearUserPosts = () => (dispatch: Dispatch<TfetchPosts>) => {
     dispatch({ type: 'CLEAR_USER_POSTS', payload: [] });
 }
 
-export const fetchAUserPosts = (username: string, page: number) => async (dispatch: Dispatch<TfetchPosts | Terror>) => {
+export const fetchAUserPosts = (username: string, page: number) => async (dispatch: Dispatch<TfetchPosts |TfetchUser| Terror>) => {
     const url = '/users/' + username + '/photos';
-    const response = await unsplash.get(url, {
-        params: {
-            username: username,
-            page: page,
-            per_page: 9
-        },
-    }).catch(function (error) {
-        
-    });;
-
-    if (response) {
-        ((page === 1) ?
-            dispatch({ type: 'FETCH_USER_POSTS_FIRST', payload: response.data }) :
-            dispatch({ type: 'FETCH_USER_POSTS', payload: response.data }))
+    const cache = _getWithExpiry("$" + username + "#" + page);
+    if(!cache){
+        const response = await unsplash.get(url, {
+            params: {
+                username: username,
+                page: page,
+                per_page: 9
+            },
+        }).catch((error) => _dispatchError(error,dispatch));;
+    
+        if (response) {
+            ((page === 1) ?
+                dispatch({ type: 'FETCH_USER_POSTS_FIRST', payload: response.data }) :
+                dispatch({ type: 'FETCH_USER_POSTS', payload: response.data }))
+        }
     }
-
-
+    else{
+        ((page === 1) ?
+                dispatch({ type: 'FETCH_USER_POSTS_FIRST', payload: cache }) :
+                dispatch({ type: 'FETCH_USER_POSTS', payload: cache}))
+    }
 }
 
 export const clearPosts = () => (dispatch: Dispatch<TfetchPosts>) => {
