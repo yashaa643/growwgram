@@ -68,7 +68,7 @@ const ProfileSection = ({ clearUser, clearUserPosts, fetchUser, user, error }: p
             ) 
         }
         else return(
-            <div style={{width:"100%"}}>
+            <div style={{width:"100%",alignItems:"center"}}>
                 <UserDetails user={user}></UserDetails>
                 <UserPosts username={username} pages={Math.ceil(total_photos / 9)} />
             </div>
