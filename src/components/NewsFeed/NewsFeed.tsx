@@ -1,5 +1,6 @@
 import React from 'react';
 
+import { motion } from 'framer-motion';
 import InfiniteScroll from 'react-infinite-scroll-component';
 import Loader from 'react-loader-spinner';
 import { connect } from 'react-redux';
@@ -39,10 +40,29 @@ class NewsFeed extends React.Component<MyProps, MyState>{
     }
     render() {
         const {posts,err} = this.props;
+        const variants = {
+            hidden : {
+                x: '-100vw'
+            },
+            visible : {
+                x: '0',
+                transition : {ease: 'easeInOut'}
+            },
+            exit : {
+                x: '-100vw',
+                transition: {ease: 'easeInOut'}
+            }
+        }
         return (
             err.err ? 
             <NotFound errorMessage={err.errMessage}/> :
-            <div className="nf16Container">
+            <motion.div 
+            className="nf16Container"
+            variants={variants}
+            initial='hidden'
+            animate='visible'
+            exit='exit'
+            >
                 <InfiniteScroll
                     dataLength={posts.length}
                     next={this.props.fetchPosts}
@@ -61,7 +81,7 @@ class NewsFeed extends React.Component<MyProps, MyState>{
                             )
                         })}
                 </InfiniteScroll>
-            </div>
+            </motion.div>
         )
     };
 }
