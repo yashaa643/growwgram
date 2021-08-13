@@ -67,13 +67,17 @@ const UserDetails = ({ user }: MyProps) => {
                         <div className="ud23UsernameColumn">
                         <span className="username-text">{username}</span>
                         {followed ?
-                            <div className="ud23ButtonRow" onClick={handleFollowers}>
+                            <motion.div
+                            initial={{x : -50, opacity: 0}}
+                            animate={{x : 0, opacity: 1}}
+                            transition={{delay : 0.5}}
+                            className="ud23ButtonRow" onClick={handleFollowers}>
                                 <button >Message</button>
                                 <button >Following</button>
-                            </div> :
+                            </motion.div> :
                             <div className="ud23FollowButton" onClick={handleFollowers}>
                                 <button>Follow</button>
-                        </div>}
+                            </div>}
                         </div>   
                     </div>
                     <div className="ud23BioRow">

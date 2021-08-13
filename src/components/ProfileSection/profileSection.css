@@ -247,7 +247,7 @@
     }
     
     .username-text{
-        font-size: 1.6rem;
+        font-size: 1.3rem;
     }
     
     .ps27UserDetails{
@@ -280,7 +280,7 @@
     }
 
     .ud23CountRow{
-        margin-top: 24px;
+        margin: 0;
         border-top: 1px solid var(--border-color);
         border-bottom: 1px solid var(--border-color);
         justify-content: space-evenly;

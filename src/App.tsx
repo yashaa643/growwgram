@@ -25,6 +25,7 @@ const App = () => {
           <Switch location={location} key={location.key}>
               <Route exact path="/" children={<NewsFeed />} />
               <Route path="/:username" children={<ProfileSection />} />
+              <Route path="/:username/*" children={<NotFound errorMessage="BAD_URL"></NotFound>}></Route>
               <Route path="*" children={<NotFound errorMessage="BAD_URL"></NotFound>}></Route>
           </Switch>
         </AnimatePresence>
