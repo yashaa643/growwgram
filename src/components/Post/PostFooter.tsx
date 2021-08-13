@@ -20,12 +20,10 @@ const PostFooter = ({created_at,description,username,likes,liked_by_user}:MyProp
     const [likesCount, setlikesCount] = useState(likes);
 
     const updateLikes = (liked:boolean) => {
-        !liked ? setlikesCount(likesCount+1):
-        setlikesCount(likesCount-1);
+        !liked ? setlikesCount(likesCount+1): setlikesCount(likesCount-1);
     }
 
     let history = useHistory();
-
     return (
         <div className="pt63PostFooter">
             <LikeSection liked_by_user={liked_by_user} updateLikes={updateLikes}></LikeSection>
@@ -33,7 +31,7 @@ const PostFooter = ({created_at,description,username,likes,liked_by_user}:MyProp
                 <div className="bold-text"> {likesCount} likes</div>
                 <p className="regular-text">
                     <span 
-                    style={{fontFamily:"Montserrat",fontSize:"1em"}} 
+                    style={{fontSize:"1em"}} 
                     className="bold-text"
                     onClick = {() => {history.push("/"+ username)}}>{username}</span>
                     &nbsp;{description}

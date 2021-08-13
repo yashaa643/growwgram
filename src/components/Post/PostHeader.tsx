@@ -12,7 +12,7 @@ const PostHeader = ({user} : MyProps) => {
     const {username, profile_image} = user;
     let history = useHistory();
     return(
-       <>
+        <div className="pt63PostHeader"> 
             <img 
             className="pt63HeaderIcon" 
             src={profile_image.large} 
@@ -23,7 +23,7 @@ const PostHeader = ({user} : MyProps) => {
             className="pt63HeaderUser bold-text">
                 <h6>{username}</h6>
             </div>
-       </>
+       </div>
     )
 }
 

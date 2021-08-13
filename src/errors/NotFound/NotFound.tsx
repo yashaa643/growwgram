@@ -17,44 +17,44 @@ const NotFound = ({ errorMessage }: MyProps) => {
     if (errorMessage === "Network Error ") {
         return (
             <div className="nf13Div">
-                <h3><a href="/">{errorMessage} Click Here To Try Again</a></h3>
                 <img className="nf13Img" src={networkErrorPng} alt="Network Error"></img>
+                <h3><a href="/">{errorMessage} Click Here To Try Again</a></h3>
             </div>
         )
     } else if (errorMessage === "401") {
         return (
             <div className="nf13Div">
-                <h3><a href="/">You are Unauthorized to view this page</a></h3>
                 <img className="nf13Img" src={unAuthorizedPng} alt="401"></img>
+                <h3><a href="/">You are Unauthorized to view this page</a></h3>
             </div>
         )
     }else if (errorMessage === "BAD_URL") {
         return (
             <div className="nf13Div">
-                <h3><a href="/">UH OH!! Looks Like You are Lost</a></h3>
                 <img className="nf13Img" src={badURLPng} alt="BAD URL"></img>
+                <h3><a href="/">UH OH!! Looks Like You are Lost</a></h3>
             </div>
         )
     }else if (errorMessage === "404") {
         return (
             <div className="nf13Div">
-                <h3><a href="/">Sorry We Did Not Find Anything</a></h3>
                 <img className="nf13Img" src={notFoundPng} alt="404"></img>
+                <h3><a href="/">Sorry We Did Not Find Anything</a></h3>
             </div>
         )
     }else if (errorMessage === "403"){
         return (
             <div className="nf13Div">
-                <h3><a href="/">Brrrr the Source has been exhausted please wait while we look into it</a></h3>
                 <img className="nf13Img" src={apiErrorPng} alt="403"></img>
+                <h3><a href="/">Brrrr the Source has been exhausted please wait while we look into it</a></h3>
             </div>
         )
     }
      else {
         return (
             <div className="nf13Div">
-                <h3><a href="/">Click Here to go back</a></h3>
                 <img className="nf13Img" src={networkErrorPng} alt="Error"></img>
+                <h3><a href="/">Click Here to go back</a></h3>
             </div>
         )
     }

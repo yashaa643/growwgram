@@ -35,7 +35,6 @@ const SearchComponent = () => {
             setSearchUserList(response.data.results);
         }
         (debouncedTerm) ? search() : setSearchUserList([])
-
     }, [debouncedTerm])
 
     const displayPopOver = () => { popover.style.visibility = "visible"; popover.style.position = "relative"; }

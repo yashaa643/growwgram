@@ -17,7 +17,7 @@ const Post = ({ post }: MyProps) => {
     return (
         <div className="pt63PostContainer">
             <div className="pt63Post">
-                <div className="pt63PostHeader"> <PostHeader user={post.user} /></div>
+                <PostHeader user={post.user} />
                 <motion.img
                     whileTap={{ scale: 1.5 }}
                     src={urls.regular}

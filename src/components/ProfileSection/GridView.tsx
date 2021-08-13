@@ -17,7 +17,7 @@ const GridView = ({ userPosts }: MyProps) => {
                     return (
                         <motion.div 
                         whileHover={{scale:1.1}}
-                        whileTap={{scale:2,boxShadow: "0px 1px 62px -12px rgba(110,98,98,0.85)"}}
+                        whileTap={{scale:2,boxShadow: "0px 0px 62px -12px rgba(110,98,98,0.85)"}}
                         key={id} className="up56ImgContainer">
                             <motion.div 
                             initial={{opacity:0}}
