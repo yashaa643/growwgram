@@ -48,7 +48,7 @@ function _dispatchError(error: any, dispatch: Dispatch<TfetchPosts | TfetchUser 
         else if (error.response.status === 404) {
             dispatch({ type: FetchError, payload: { err: true, errMessage: "404" } })
         }
-        else if (error.response.statues === 403) {
+        else if (error.response.status === 403) {
             dispatch({ type: FetchError, payload: { err: true, errMessage: "403" } })
         }
     } else if (error.request) {                 //request was made but no response received
@@ -56,7 +56,6 @@ function _dispatchError(error: any, dispatch: Dispatch<TfetchPosts | TfetchUser 
     } else {                                    //error in request config
         console.log('Error', error.message);
     }
-    console.log(error.config);
 }
 
 
