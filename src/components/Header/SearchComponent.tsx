@@ -6,6 +6,7 @@ import React, {
   useState,
 } from 'react';
 
+import { AnimatePresence } from 'framer-motion';
 import Loader from 'react-loader-spinner';
 import { useHistory } from 'react-router-dom';
 
@@ -47,7 +48,7 @@ const SearchComponent = () => {
 
     const setPopoverStatus = (term: string) => {
         setSearchTerm(term);
-        if(term === "") hidePopOver() 
+        if (term === "") hidePopOver()
         else displayPopOver()
     }
 
@@ -58,13 +59,16 @@ const SearchComponent = () => {
                 onChange={(e) => setPopoverStatus(e.target.value)}
                 onBlur={() => setPopoverStatus("")}
                 type="text"
-                placeholder="Search"/>
+                placeholder="Search" />
             <div id="sc94Popover" ref={popOverEl}>
-                {(searchTerm) && (searchUserList.length === 0) && 
+                {(searchTerm) && (searchUserList.length === 0) &&
                     <div style={{ marginLeft: "45%" }}>
-                        <Loader type="ThreeDots" color="gray" height={20} width={20} /> 
+                        <Loader type="ThreeDots" color="gray" height={20} width={20} />
                     </div>}
-                {searchUserList.length > 0 && <Popover searchUserList={searchUserList} openUser={openUser}></Popover>}
+                {searchUserList.length > 0 &&
+                    <AnimatePresence exitBeforeEnter>
+                        <Popover searchUserList={searchUserList} openUser={openUser}></Popover>
+                    </AnimatePresence>}
             </div>
         </div>
     )
