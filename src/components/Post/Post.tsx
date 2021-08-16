@@ -34,7 +34,7 @@ const Post = ({ post }: MyProps) => {
                     <Blurhash
                     hash={blur_hash}
                     width={postWidth}
-                    height={Math.floor(height/width)*postWidth}
+                    height={(height/width)*postWidth}
                     resolutionX={32}
                     resolutionY={32}
                     punch={1}

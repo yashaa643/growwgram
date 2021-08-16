@@ -32,14 +32,17 @@ type MyProps = {
 
 const variants = {
     hidden : {
-        x: '-100vw'
+        opacity: 0,
+        // x: '-100vw'
     },
     visible : {
-        x: '0',
+        opacity: 1,
+        // x: '0',
         transition : {delay: 0.8 ,ease: 'easeInOut',duration: 0.4}
     },
     exit : {
-        x: '-100vw',
+        opacity: 0,
+        // x: '-100vw',
         transition: {ease: 'easeInOut'}
     }
 }

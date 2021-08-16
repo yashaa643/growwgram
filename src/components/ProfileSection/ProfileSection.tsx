@@ -42,14 +42,17 @@ const ProfileSection = ({ clearUser, clearUserPosts, fetchUser, user, error }: p
     
     const variants = {
         hidden : {
-            x: '100vw'
+            // x: '100vw'
+            opacity: 0,
         },
         visible : {
-            x: '0',
+            // x: '0',
+            opacity :1,
             transition : {ease: 'easeInOut'}
         },
         exit : {
-            x: '100vw',
+            opacity : 0,
+            // x: '100vw',
             transition: {ease: 'easeInOut'}
         }
     }
