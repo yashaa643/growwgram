@@ -15,11 +15,13 @@ type MyProps = {
 }
 
 const Post = ({ post }: MyProps) => {
-    const { created_at, liked_by_user, likes, urls, description, alt_description, user, blur_hash ,height, width} = post;
+    const { created_at, liked_by_user, likes, urls, description, alt_description, user, blur_hash, height, width } = post;
+
     const [imgLoad, setImgLoad] = useState(false)
-    let {width:postWidth} = useWindowDimensions();
-    
-    postWidth = Math.min(400,postWidth);
+    const [hashPresent, setHashPresent] = useState(true);
+    let { width: postWidth } = useWindowDimensions();
+
+    postWidth = Math.min(400, postWidth);
 
     const imageLoaded = () => {
         setImgLoad(true);
@@ -29,15 +31,17 @@ const Post = ({ post }: MyProps) => {
             <div className="pt63Post">
                 <PostHeader user={post.user} />
                 <div
-                style={{ display: imgLoad ? "none" : "block" }}>
-                    <Blurhash
-                    hash={blur_hash}
-                    width={postWidth}
-                    height={(height/width)*postWidth}
-                    resolutionX={32}
-                    resolutionY={32}
-                    punch={1}
-                />
+                    style={{ display: imgLoad ? "none" : "block" }}>
+                    {(blur_hash === null) ?
+                        <div>Image Loading</div> :
+                        <Blurhash
+                            hash={blur_hash}
+                            width={postWidth}
+                            height={(height / width) * postWidth}
+                            resolutionX={32}
+                            resolutionY={32}
+                            punch={1}
+                        />}
                 </div>
                 <motion.img
                     style={{ display: !imgLoad ? "none" : "block" }}
