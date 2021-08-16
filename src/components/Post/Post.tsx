@@ -1,9 +1,11 @@
 import './post.css';
 
-import React from 'react';
+import React, { useState } from 'react';
 
 import { motion } from 'framer-motion';
+import { Blurhash } from 'react-blurhash';
 
+import useWindowDimensions from '../../hooks';
 import { post } from '../../types';
 import PostFooter from './PostFooter';
 import PostHeader from './PostHeader';
@@ -13,12 +15,35 @@ type MyProps = {
 }
 
 const Post = ({ post }: MyProps) => {
-    const { created_at, liked_by_user, likes, urls, description, alt_description, user } = post;
+    const { created_at, liked_by_user, likes, urls, description, alt_description, user, blur_hash ,height, width} = post;
+    const [imgLoad, setImgLoad] = useState(false)
+    let {width:postWidth} = useWindowDimensions();
+    
+    postWidth = (postWidth > 400) ? 400  : postWidth;
+
+    const imageLoaded = () => {
+        console.log("on load fired")
+        setImgLoad(true);
+    }
     return (
         <div className="pt63PostContainer">
             <div className="pt63Post">
                 <PostHeader user={post.user} />
+                <div
+                style={{ display: imgLoad ? "none" : "block" }}>
+                    <Blurhash
+                    hash={blur_hash}
+                    width={postWidth}
+                    height={Math.floor(height/width)*postWidth}
+                    resolutionX={32}
+                    resolutionY={32}
+                    punch={1}
+                />
+                </div>
                 <motion.img
+                    style={{ display: !imgLoad ? "none" : "block" }}
+                    className="pt63Img"
+                    onLoad={imageLoaded}
                     whileTap={{ scale: 1.5 }}
                     src={urls.regular}
                     alt={description ? description : alt_description} />

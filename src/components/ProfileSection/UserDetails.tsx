@@ -12,7 +12,7 @@ const UserDetails = ({ user }: MyProps) => {
     const { username, profile_image, first_name, last_name, total_photos, followers_count, following_count, followed_by_user, bio } = user;
     const [followed, setFollowed] = useState(followed_by_user);
 
-    const handleFollowers: React.MouseEventHandler<HTMLDivElement> | undefined = () => {
+    const handleFollowers: React.MouseEventHandler<HTMLButtonElement> | undefined = () => {
         setFollowed(!followed);
     }
 
@@ -35,12 +35,12 @@ const UserDetails = ({ user }: MyProps) => {
                             initial={{x : -50, opacity: 0}}
                             animate={{x : 0, opacity: 1}}
                             transition={{delay : 0.5}}
-                            className="ud23ButtonRow" onClick={handleFollowers}>
+                            className="ud23ButtonRow">
                                 <button >Message</button>
-                                <button >Following</button>
+                                <button  onClick={handleFollowers} >Following</button>
                             </motion.div> :
-                            <div className="ud23FollowButton" onClick={handleFollowers}>
-                                <button>Follow</button>
+                            <div className="ud23FollowButton" >
+                                <button onClick={handleFollowers}>Follow</button>
                             </div>}
                     </div>
                     <ul className="ud23CountRow">
@@ -71,12 +71,12 @@ const UserDetails = ({ user }: MyProps) => {
                             initial={{x : -50, opacity: 0}}
                             animate={{x : 0, opacity: 1}}
                             transition={{delay : 0.5}}
-                            className="ud23ButtonRow" onClick={handleFollowers}>
+                            className="ud23ButtonRow">
                                 <button >Message</button>
-                                <button >Following</button>
+                                <button onClick={handleFollowers}>Following</button>
                             </motion.div> :
-                            <div className="ud23FollowButton" onClick={handleFollowers}>
-                                <button>Follow</button>
+                            <div className="ud23FollowButton" >
+                                <button onClick={handleFollowers}>Follow</button>
                             </div>}
                         </div>   
                     </div>

@@ -6,6 +6,9 @@ export type post = {
     liked_by_user: boolean,
     description: string,
     alt_description: string,
+    blur_hash: string,
+    width: number,
+    height: number,
     urls: {
       raw: string,
       full: string,
