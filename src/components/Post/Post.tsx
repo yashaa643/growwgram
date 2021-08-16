@@ -18,7 +18,6 @@ const Post = ({ post }: MyProps) => {
     const { created_at, liked_by_user, likes, urls, description, alt_description, user, blur_hash, height, width } = post;
 
     const [imgLoad, setImgLoad] = useState(false)
-    const [hashPresent, setHashPresent] = useState(true);
     let { width: postWidth } = useWindowDimensions();
 
     postWidth = Math.min(400, postWidth);
