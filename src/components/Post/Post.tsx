@@ -19,10 +19,9 @@ const Post = ({ post }: MyProps) => {
     const [imgLoad, setImgLoad] = useState(false)
     let {width:postWidth} = useWindowDimensions();
     
-    postWidth = (postWidth > 400) ? 400  : postWidth;
+    postWidth = Math.min(400,postWidth);
 
     const imageLoaded = () => {
-        console.log("on load fired")
         setImgLoad(true);
     }
     return (
