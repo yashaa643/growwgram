@@ -59,14 +59,14 @@ function _dispatchError(error: any, dispatch: Dispatch<TfetchPosts | TfetchUser 
 }
 
 
-export const fetchPosts = () => async (dispatch: Dispatch<TfetchPosts | TfetchUser | Terror>) => {
+export const fetchPosts = (page : number) => async (dispatch: Dispatch<TfetchPosts | TfetchUser | Terror>) => {
     clearUser();
     clearUserPosts();
-    const cache = _getWithExpiry("feedPosts")
+    const cache = _getWithExpiry(`feedPosts#${page}`)
     if (!cache) {
         const response = await unsplash.get('/photos/random', { params: { count: 10 }, }).catch((error) => _dispatchError(error, dispatch));
         if (response) {
-            _setWithExpiry("feedPosts", response.data, 300000); //cache for 5 min
+            _setWithExpiry(`feedPosts#${page}`, response.data, 300000); //cache for 5 min
             dispatch({ type: FetchPosts, payload: response.data });
         }
     } else { dispatch({ type: FetchPosts, payload: cache }); }

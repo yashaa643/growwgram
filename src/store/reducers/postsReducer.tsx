@@ -1,3 +1,5 @@
+import { union } from 'lodash';
+
 import { TfetchPosts } from '../../types';
 import {
   ClearPosts,
@@ -8,7 +10,7 @@ const postsReducer = (state=[], action : TfetchPosts) => {
     
     switch(action.type){
         case FetchPosts:
-            return [...state,...action.payload];
+            return union(state,action.payload);
         case ClearPosts:
             return [];
         default:

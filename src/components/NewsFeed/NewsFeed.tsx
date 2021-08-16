@@ -18,10 +18,11 @@ import Post from '../Post';
 
 type MyState = {
     posts: post[];
+    pages: number;
 }
 
 type MyProps = {
-    fetchPosts: () => void;
+    fetchPosts: (page: number) => void;
     clearPosts: () => void;
     posts: post[];
     err: {
@@ -49,15 +50,26 @@ const variants = {
 
 class NewsFeed extends React.Component<MyProps, MyState>{
 
+    state: MyState = {
+        posts: [],
+        pages: 0
+    }
+
     componentDidMount() {
-        this.props.fetchPosts();
+        this.props.fetchPosts(this.state.pages);
     }
     componentWillUnmount(){
         this.props.clearPosts();
     }
+
+    fetchNextPage = () => {
+        const {pages} = this.state;
+        this.props.fetchPosts(pages + 1);
+        this.setState({pages : pages + 1});
+        
+    }
     render() {
         const {posts,err} = this.props;
-
         if(err.err){
             return <NotFound errorMessage={err.errMessage}/> 
         }
@@ -72,7 +84,7 @@ class NewsFeed extends React.Component<MyProps, MyState>{
             >
                 <InfiniteScroll
                     dataLength={posts.length}
-                    next={this.props.fetchPosts}
+                    next={this.fetchNextPage}
                     hasMore={true}
                     loader={<LoaderComponent />}
                 >
