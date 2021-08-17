@@ -37,7 +37,7 @@ class UserPosts extends React.Component<propTypes>{
     }
 
     componentDidMount() {
-        const { page, username} = this.state;
+        const { page, username } = this.state;
         this.props.fetchAUserPosts(username, page);
         this.setState({ page: page + 1 });
     }
@@ -46,7 +46,7 @@ class UserPosts extends React.Component<propTypes>{
     showPostView = () => this.setState({ isGrid: false, })
 
     fetchMorePosts = () => {
-        const { username , fetchAUserPosts } = this.props;
+        const { username, fetchAUserPosts } = this.props;
         const { page } = this.state;
         fetchAUserPosts(username, page)
         this.setState({ page: page + 1 });
@@ -59,7 +59,7 @@ class UserPosts extends React.Component<propTypes>{
         return (
             <>
                 <div className="up56Nav ps21LargeScreensOnly">
-                    <div className={`up56NavBtn ${isGrid ? 'active' : ''}`} onClick={() => { this.showGridView()}}>
+                    <div className={`up56NavBtn ${isGrid ? 'active' : ''}`} onClick={() => { this.showGridView() }}>
                         <span className="material-icons">apps</span>Grid</div>
                     <div className={`up56NavBtn ${!isGrid ? 'active' : ''}`} onClick={() => { this.showPostView() }}>
                         <span className="material-icons">pages</span>Post</div>
@@ -71,25 +71,17 @@ class UserPosts extends React.Component<propTypes>{
                         dataLength={userPosts.length}
                         next={this.fetchMorePosts}
                         hasMore={page <= pages}
-                        loader={<LoaderComponent/>}
+                        loader={<LoaderComponent />}
                     >
-                                <div className="ps21LargeScreensOnly">
-                                    {isGrid ? <GridView userPosts={userPosts}></GridView> :
-                                        <div className="up56PostViewContainer">
-                                            {userPosts.map((post) => {
-                                                return (
-                                                    <Post key={post.id} post={post}></Post>
-                                                )
-                                            })}
-                                        </div>}
-                                </div>
-                                <div className="ps21MobilesOnly up56PostViewContainer">
-                                    {userPosts.map((post) => {
-                                        return (
-                                            <Post key={post.id} post={post}></Post>
-                                        )
-                                    })}
-                                </div>
+                        <div className="ps21LargeScreensOnly">
+                            {isGrid ? <GridView userPosts={userPosts}></GridView> :
+                                <div className="up56PostViewContainer">
+                                    {userPosts.map(post => <Post key={post.id} post={post}></Post>)}
+                                </div>}
+                        </div>
+                        <div className="ps21MobilesOnly up56PostViewContainer">
+                            {userPosts.map((post) => <Post key={post.id} post={post}></Post>)}
+                        </div>
                     </InfiniteScroll >}
             </>
         )

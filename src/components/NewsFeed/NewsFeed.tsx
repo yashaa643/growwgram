@@ -34,16 +34,13 @@ type MyProps = {
 const variants = {
     hidden : {
         opacity: 0,
-        // x: '-100vw'
     },
     visible : {
         opacity: 1,
-        // x: '0',
         transition : {delay: 0.8 ,ease: 'easeInOut',duration: 0.4}
     },
     exit : {
         opacity: 0,
-        // x: '-100vw',
         transition: {ease: 'easeInOut'}
     }
 }
@@ -88,11 +85,7 @@ class NewsFeed extends React.Component<MyProps, MyState>{
                     hasMore={true}
                     loader={<LoaderComponent />}
                 >
-                        {posts.map((post) => {
-                            return (
-                                <Post key={post.id} post={post}></Post>
-                            )
-                        })}
+                    {posts.map( post => <Post key={post.id} post={post}></Post>)}
                 </InfiniteScroll>
             </motion.div>
         )

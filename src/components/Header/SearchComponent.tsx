@@ -65,7 +65,7 @@ const SearchComponent = () => {
                     <div style={{ marginLeft: "45%" }}>
                         <Loader type="ThreeDots" color="gray" height={20} width={20} />
                     </div>}
-                {searchUserList.length > 0 &&
+                {(searchTerm) && searchUserList.length > 0 &&
                     <AnimatePresence exitBeforeEnter>
                         <Popover searchUserList={searchUserList} openUser={openUser}></Popover>
                     </AnimatePresence>}

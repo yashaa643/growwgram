@@ -42,17 +42,14 @@ const ProfileSection = ({ clearUser, clearUserPosts, fetchUser, user, error }: p
     
     const variants = {
         hidden : {
-            // x: '100vw'
             opacity: 0,
         },
         visible : {
-            // x: '0',
             opacity :1,
             transition : {ease: 'easeInOut'}
         },
         exit : {
             opacity : 0,
-            // x: '100vw',
             transition: {ease: 'easeInOut'}
         }
     }
@@ -68,9 +65,7 @@ const ProfileSection = ({ clearUser, clearUserPosts, fetchUser, user, error }: p
     const userIsEmpty = Object.keys(user).length === 0 && user.constructor === Object;
 
     if (error.err) {
-        return (
-            <NotFound errorMessage={error.errMessage} />
-        )
+        return <NotFound errorMessage={error.errMessage} />
     }
 
     else {
