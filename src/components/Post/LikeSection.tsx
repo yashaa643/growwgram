@@ -14,7 +14,7 @@ const LikeSection = ({liked_by_user,updateLikes}:MyProps) => {
     return (
     <div className="pt63LikeSection">
         <motion.button
-        whileTap={{ scale: 1.2 }}
+        whileTap={{ scale: 1.2}}
         onClick= {() => {
             updateLikes(liked);
             setLiked(!liked);
